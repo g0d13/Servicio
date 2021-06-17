@@ -19,8 +19,8 @@ class CreateSolicitudesTable extends Migration
             $table->string('operacion');
             $table->string('maquina');
             $table->string('modulo');
-            $table->foreign('problema_id')->references('id')->on('problemas');
-            $table->date('llegada_mecanico');
+            $table->foreignId('problema_id')->constrained('problemas');
+            $table->dateTime('llegada_mecanico');
             $table->timestamps();
         });
     }
