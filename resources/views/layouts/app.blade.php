@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,127 +9,122 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/OverlayScrollbars.min.css') }}">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif !important;
+        }
+
+    </style>
 
 </head>
 
 <body>
-@include('layouts.navigation')
+    @include('layouts.navigation')
 
-{{-- Dashboard --}}
-<div class="d-flex" id="wrapper">
-    <!-- Sidebar-->
-    <div class="border-end bg-primary" id="sidebar-wrapper">
-        <div class="sidebar-heading border-bottom bg-light">Dashboard</div>
-        <div class="list-group list-group-flush">
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <button class="btn text-white d-flex justify-content-between w-100" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-                            aria-controls="collapseExample">
-                              <span>
-                                <i class="fa fa-home" aria-hidden="true"></i> Inicio
-                              </span>
-                        <i class="fa fa-sort-down" aria-hidden="true"></i>
-                    </button>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body mx-3 text-dark">
-                            <a href="">Item</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <p>
-                        <button class="btn text-white d-flex justify-content-between w-100" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false"
-                                aria-controls="collapseExample">
-                              <span>
-                                <i class="fa fa-sticky-note" aria-hidden="true"></i></i> Bitácocras
-                              </span>
-                            <i class="fa fa-sort-down" aria-hidden="true"></i>
-                        </button>
-                    </p>
-                    <div class="collapse" id="collapseExample2">
-                        <div class="card card-body mx-3 text-dark">
-                            <a href="">Item</a>
-                        </div>
-                    </div>
-                    </p>
-                </li>
-            </ul>
+    {{-- Dashboard --}}
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-dark" id="sidebar-wrapper">
+            <x-sidebar></x-sidebar>
         </div>
-    </div>
-    <!-- Page content wrapper-->
-    <div id="page-content-wrapper">
-        <!-- Top navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <div class="container-fluid">
-                <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#!">Action</a>
-                                <a class="dropdown-item" href="#!">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#!">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
+        {{-- Sidebar en mobile --}}
+        <div class="offcanvas offcanvas-start d-flex flex-column align-content-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header bg-dark">
+                <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+            <div class="offcanvas-body p-0 m-0 py-3 bg-dark">
+                <div class="border-end bg-dark">
+                    <x-sidebar></x-sidebar>
                 </div>
             </div>
-        </nav>
-        <!-- Page content-->
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <header>
-                <div>
-                    {{ $header }}
+        </div>
+
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-light shadow m-3 px-0" style="background: white!important;">
+                <div class="d-flex justify-content-between w-100 px-2 align-items-center">
+                    <div>
+                        <button class="btn rounded-0" id="sidebarToggle">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn d-block d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center me-3 flex-column d-none d-md-block">
+                            <p class="m-0 p-0 fw-bold">Margot Robbie</p>
+                            <span class="m-0 p-0 text-muted fw-bold"
+                                style="font-size: 12px; margin-top: 0!important;">Admin</span>
+                        </div>
+                        <div class="btn-group dropstart d-flex">
+                            <div class="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="https://graziamagazine.com/mx/wp-content/uploads/sites/13/2019/01/MARGOT-ROBBIE.jpg?fit=1500%2C1000"
+                                    alt="" class="rounded-pill" style="width: 40px; height: 40px;">
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </header>
+            </nav>
 
-            <!-- Page Content -->
-            <main class="overlay-scrollbar">
-                {{ $slot }}
-            </main>
+            <!-- Page content-->
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <header>
+                    <div>
+                        {{ $header }}
+                    </div>
+                </header>
 
+                <!-- Page Content -->
+                <main class="overlay-scrollbar">
+                    {{ $slot }}
+                </main>
+
+            </div>
         </div>
     </div>
-</div>
-<!-- Scripts -->
-<script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
-<script src="{{asset('js/all.min.js')}}" defer></script>
-<script src="{{asset('js/OverlayScrollbars.min.js')}}" defer></script>
-<script src="{{asset('js/app.js')}}" defer></script>
-<script>
-    window.addEventListener('DOMContentLoaded', event => {
-        const sidebarToggle = document.body.querySelector('#sidebarToggle');
-        if (sidebarToggle) {
-            // Uncomment Below to persist sidebar toggle between refreshes
-            // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-            //     document.body.classList.toggle('sb-sidenav-toggled');
-            // }
-            sidebarToggle.addEventListener('click', event => {
-                event.preventDefault();
-                document.body.classList.toggle('sb-sidenav-toggled');
-                localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains(
-                    'sb-sidenav-toggled'));
-            });
-        }
-    });
-</script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/all.min.js') }}" defer></script>
+    <script src="{{ asset('js/OverlayScrollbars.min.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', event => {
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                // Uncomment Below to persist sidebar toggle between refreshes
+                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                //     document.body.classList.toggle('sb-sidenav-toggled');
+                // }
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains(
+                        'sb-sidenav-toggled'));
+                });
+            }
+        });
+
+    </script>
 </body>
+
 </html>
