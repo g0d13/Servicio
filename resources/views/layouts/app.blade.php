@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
     <!-- Scripts -->
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
+    <script src="{{asset('js/all.min.js')}}" defer></script>
 </head>
 <body>
 @include('layouts.navigation')
@@ -29,6 +31,5 @@
 <main>
     {{ $slot }}
 </main>
-<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>
