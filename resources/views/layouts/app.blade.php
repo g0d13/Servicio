@@ -11,15 +11,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/OverlayScrollbars.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-    <!-- Scripts -->
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
-    <script src="{{asset('js/all.min.js')}}" defer></script>
-    <script src="{{asset('js/OverlayScrollbars.min.js')}}" defer></script>
-    <script src="{{asset('js/app.js')}}" defer></script>
 </head>
 
 <body>
@@ -113,7 +108,11 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<!-- Scripts -->
+<script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
+<script src="{{asset('js/all.min.js')}}" defer></script>
+<script src="{{asset('js/OverlayScrollbars.min.js')}}" defer></script>
+<script src="{{asset('js/app.js')}}" defer></script>
 <script>
     window.addEventListener('DOMContentLoaded', event => {
         const sidebarToggle = document.body.querySelector('#sidebarToggle');
