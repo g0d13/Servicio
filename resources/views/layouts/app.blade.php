@@ -12,10 +12,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/OverlayScrollbars.min.css') }}">
 
     <!-- Scripts -->
     <script src="{{asset('js/bootstrap.bundle.min.js')}}" defer></script>
     <script src="{{asset('js/all.min.js')}}" defer></script>
+    <script src="{{asset('js/OverlayScrollbars.min.js')}}" defer></script>
+    <script src="{{asset('js/app.js')}}" defer></script>
 </head>
 <body>
 @include('layouts.navigation')
@@ -28,7 +31,7 @@
 </header>
 
 <!-- Page Content -->
-<main>
+<main class="overlay-scrollbar">
     {{ $slot }}
 </main>
 </body>
