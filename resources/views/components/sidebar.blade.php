@@ -4,22 +4,24 @@
 <div class="list-group list-group-flush">
     <ul class="list-unstyled ps-0 ms-3 ms-md-0">
         <li class="mb-3">
-            <a href="" class="text-decoration-none w-100 ms-3 item-active sidebar-item" style="font-size: 16px;"><i class="fa fa-home me-3" aria-hidden="true"></i> Inicio</a>
+            <a href="{{route('dashboard')}}" class="text-decoration-none w-100 ms-3 item-active sidebar-item" style="font-size: 16px;"><i class="fa fa-home me-3" aria-hidden="true"></i> Inicio</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-book me-3" aria-hidden="true"></i> Bitácoras</a>
+            <a href="{{route('bitacoras')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;">
+                <i class="fa fa-book me-3" aria-hidden="true">
+                </i> Bitácoras</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-user me-3" aria-hidden="true"></i> Usuarios</a>
+            <a href="{{route('usuarios')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-user me-3" aria-hidden="true"></i> Usuarios</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Solicitudes</a>
+            <a href="{{route('solicitudes')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Solicitudes</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-building me-3" aria-hidden="true"></i> Plantas</a>
+            <a href="{{route('plantas')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-building me-3" aria-hidden="true"></i> Plantas</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-cog me-3" aria-hidden="true"></i> Configuración</a>
+            <a href="{{route('configuracion')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-cog me-3" aria-hidden="true"></i> Configuración</a>
         </li>
     </ul>
 </div>

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 // Route::get('/dashboard', function () {
@@ -22,6 +22,26 @@ Route::get('/', function () {
 // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->name('dashboard');
+
+Route::get('/bitacoras', function () {
+    return view('bitacoras');
+})->name('bitacoras');
+
+Route::get('/usuarios', function () {
+    return view('bitacoras');
+})->name('usuarios');
+
+Route::get('/solicitudes', function () {
+    return view('bitacoras');
+})->name('solicitudes');
+
+Route::get('/plantas', function () {
+    return view('bitacoras');
+})->name('plantas');
+
+Route::get('/configuracion', function () {
+    return view('bitacoras');
+})->name('configuracion');
 
 require __DIR__.'/auth.php';

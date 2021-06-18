@@ -35,6 +35,7 @@
 
     {{-- Dashboard --}}
     <div class="d-flex" id="wrapper">
+
         <!-- Sidebar-->
         <div class="border-end bg-dark" id="sidebar-wrapper">
             <x-sidebar></x-sidebar>
@@ -54,21 +55,21 @@
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-light shadow m-3 px-0 rounded-3" style="background: white!important;">
+            <nav class="navbar navbar-light shadow-md mt-3 mx-3 px-0 rounded-3" style="background: white!important;">
                 <div class="d-flex justify-content-between w-100 px-2 align-items-center">
-                    <div>
+                    <div class="d-flex align-items-center">
                         <button class="btn rounded-0" id="sidebarToggle">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
+
                         <button class="btn d-block d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
                             <i class="fa fa-bars" aria-hidden="true"></i>
                         </button>
+                        {{ $header }}
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="d-flex align-items-center justify-content-center me-3 flex-column d-none d-md-block">
                             <span class="m-0 p-0 fw-bold">Margot Robbie</span>
-                            {{-- <span class="m-0 p-0 text-muted fw-bold w-100"
-                                style="font-size: 12px; margin-top: 0!important;">Admin</span> --}}
                         </div>
                         <div class="btn-group dropstart d-flex">
                             <div class="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -87,14 +88,7 @@
             </nav>
 
             <!-- Page content-->
-            <div class="m-3 mt-5">
-                <!-- Page Heading -->
-                <header>
-                    <div>
-                        {{ $header }}
-                    </div>
-                </header>
-
+            <div class="m-3 mt-4">
                 <!-- Page Content -->
                 <main class="overlay-scrollbar">
                     {{ $slot }}
