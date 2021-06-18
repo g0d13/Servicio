@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReparacionesTable extends Migration
+class CreateBitacorasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateReparacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reparaciones', function (Blueprint $table) {
+        Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
-            $table->boolean('reparada');
-            $table->unsignedBigInteger('bitacora_id');
+            $table->string('nombre');
+            $table->string('detalles');
             $table->unsignedBigInteger('mecanico_id');
-            $table->foreign('bitacora_id')->references('id')->on('bitacoras');
+            $table->string('tipos');
             $table->foreign('mecanico_id')->references('id')->on('users');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateReparacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reparaciones');
+        Schema::dropIfExists('bitacoras');
     }
 }

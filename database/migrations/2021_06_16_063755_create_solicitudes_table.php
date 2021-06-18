@@ -16,10 +16,12 @@ class CreateSolicitudesTable extends Migration
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
             $table->string('prioridad');
-            $table->string('operacion');
-            $table->string('maquina');
+            $table->unsignedBigInteger('supervisor_id');
             $table->string('modulo');
             $table->foreignId('problema_id')->constrained('problemas');
+            $table->foreignId('bitacora_id')->constrained('bitacoras');
+            $table->foreignId('maquina_id')->constrained('maquinas');
+            $table->foreign('supervisor_id')->references('id')->on('users');
             $table->dateTime('llegada_mecanico');
             $table->timestamps();
         });

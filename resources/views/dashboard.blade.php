@@ -79,7 +79,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-xl-8 col-lg-8">
             <x-table :headers="['Id', 'Nombre', 'Apellido', 'Edad', 'Correo']" :dataArray="[
                 0 => [
@@ -102,5 +102,5 @@
                 ]
             ]" :title="'Mecanicos'"></x-table>
         </div>
-    </div>
+    </div> --}}
 </x-app-layout>
