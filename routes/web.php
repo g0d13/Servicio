@@ -29,15 +29,23 @@ Route::get('/bitacoras', function () {
 })->name('bitacoras');
 
 Route::get('/usuarios', function () {
-    return view('bitacoras');
+    return view('usuarios');
 })->name('usuarios');
 
 Route::get('/solicitudes', function () {
-    return view('bitacoras');
+    return view('solicitudes');
 })->name('solicitudes');
 
+Route::get('/reparaciones', function () {
+    return view('reparaciones');
+})->name('reparaciones');
+
+Route::get('/maquinas', function () {
+    return view('maquinas');
+})->name('maquinas');
+
 Route::get('/plantas', function () {
-    return view('bitacoras');
+    return view('plantas');
 })->name('plantas');
 
 Route::get('/configuracion', function () {

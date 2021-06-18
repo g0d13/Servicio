@@ -1,40 +1,36 @@
 <x-app-layout>
     <x-slot name="header">
-        Bitacoras
+        Reparaciones
     </x-slot>
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
-            <p class="text-muted mb-3 fs-4 fw-bold">Bitacoras</p>
+            <p class="text-muted mb-3 fs-4 fw-bold">Reparaciones</p>
             <a href="#!" class="btn btn-sm btn-primary">Agregar</a>
         </div>
         <table class="table table-borderless align-middle">
-
             <thead class="border-top border-bottom">
-                <th class="text-uppercase text-muted ">#</th>
-                <th class="text-uppercase text-muted ">Nombre</th>
-                <th class="text-uppercase text-muted ">Detalles</th>
-                <th class="text-uppercase text-muted ">Mecanico encargado</th>
-                <th class="text-uppercase text-muted ">Tipos</th>
-                <th class="text-uppercase text-muted "></th>
+            <th class="text-uppercase text-muted ">#</th>
+            <th class="text-uppercase text-muted ">Reparado</th>
+            <th class="text-uppercase text-muted ">Hora reparacion</th>
+            <th class="text-uppercase text-muted ">Mecanico</th>
+            <th class="text-uppercase text-muted ">Bitacora</th>
+            <th class="text-uppercase text-muted "></th>
             </thead>
             <tbody>
             <td>
                 1
             </td>
             <td>
-                Bitacora 1
-            </td>
-            <td>
-                Detalles bitacora 2
+                Alta
             </td>
             <td>
                 Mecanico
             </td>
             <td>
-                Tipos
+                Juan Diego
             </td>
             <td>
-                Editar|Eliminar
+                Maquina 33
             </td>
             </tbody>
         </table>
