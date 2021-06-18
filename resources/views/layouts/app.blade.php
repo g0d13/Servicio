@@ -23,6 +23,7 @@
     <style>
         body {
             font-family: 'Nunito', sans-serif !important;
+            background: rgb(245, 245, 245)!important;
         }
 
     </style>
@@ -53,7 +54,7 @@
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-light shadow m-3 px-0" style="background: white!important;">
+            <nav class="navbar navbar-light shadow m-3 px-0 rounded-3" style="background: white!important;">
                 <div class="d-flex justify-content-between w-100 px-2 align-items-center">
                     <div>
                         <button class="btn rounded-0" id="sidebarToggle">
@@ -65,9 +66,9 @@
                     </div>
                     <div class="d-flex align-items-center">
                         <div class="d-flex align-items-center justify-content-center me-3 flex-column d-none d-md-block">
-                            <p class="m-0 p-0 fw-bold">Margot Robbie</p>
-                            <span class="m-0 p-0 text-muted fw-bold"
-                                style="font-size: 12px; margin-top: 0!important;">Admin</span>
+                            <span class="m-0 p-0 fw-bold">Margot Robbie</span>
+                            {{-- <span class="m-0 p-0 text-muted fw-bold w-100"
+                                style="font-size: 12px; margin-top: 0!important;">Admin</span> --}}
                         </div>
                         <div class="btn-group dropstart d-flex">
                             <div class="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -86,7 +87,7 @@
             </nav>
 
             <!-- Page content-->
-            <div class="container-fluid">
+            <div class="m-3 mt-5">
                 <!-- Page Heading -->
                 <header>
                     <div>
