@@ -19,7 +19,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-{{--    <link rel="stylesheet" href="{{ asset('css/OverlayScrollbars.min.css') }}">--}}
+    <style>
+        .bg-white,.card,.modal-content{
+            background-color: white!important;
+        }
+    </style>
 
     <style>
         body {
@@ -55,39 +59,9 @@
 
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
-            <!-- Top navigation-->
-            <nav class="navbar navbar-light shadow-md mt-3 mx-3 px-0 rounded-3" style="background: white!important;">
-                <div class="d-flex justify-content-between w-100 px-2 align-items-center">
-                    <div class="d-flex align-items-center">
-                        <button class="btn rounded-0" id="sidebarToggle">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
-                        </button>
-
-                        <button class="btn d-block d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                            <i class="fa fa-bars" aria-hidden="true"></i>
-                        </button>
-                        {{ $header }}
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center justify-content-center me-3 flex-column d-none d-md-block">
-                            <span class="m-0 p-0 fw-bold">Margot Robbie</span>
-                        </div>
-                        <div class="btn-group dropstart d-flex">
-                            <div class="btn p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <img src="https://graziamagazine.com/mx/wp-content/uploads/sites/13/2019/01/MARGOT-ROBBIE.jpg?fit=1500%2C1000"
-                                    alt="" class="rounded-pill" style="width: 40px; height: 40px;">
-                            </div>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
+            <x-topnav >
+                {{$header}}
+            </x-topnav>
             <!-- Page content-->
             <div class="m-3 mt-4">
                 <!-- Page Content -->
@@ -105,10 +79,6 @@
         window.addEventListener('DOMContentLoaded', event => {
             const sidebarToggle = document.body.querySelector('#sidebarToggle');
             if (sidebarToggle) {
-                // Uncomment Below to persist sidebar toggle between refreshes
-                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-                //     document.body.classList.toggle('sb-sidenav-toggled');
-                // }
                 sidebarToggle.addEventListener('click', event => {
                     event.preventDefault();
                     document.body.classList.toggle('sb-sidenav-toggled');
