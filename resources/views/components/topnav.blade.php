@@ -1,6 +1,6 @@
 <!-- Top navigation-->
 <nav class="navbar navbar-light shadow-md mt-3 mx-3 px-0 rounded-3" style="background: white!important;">
-    <div class="d-flex justify-content-between w-100 px-2 align-items-center">
+    <div class="d-flex justify-content-between w-100 px-3 align-items-center">
         <div class="d-flex align-items-center">
             <button class="btn rounded-0" id="sidebarToggle">
                 <i class="fa fa-bars" aria-hidden="true"></i>

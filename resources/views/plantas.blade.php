@@ -10,24 +10,26 @@
         <table class="table table-borderless align-middle">
 
             <thead class="border-top border-bottom">
-            <th class="text-uppercase text-muted ">#</th>
-            <th class="text-uppercase text-muted ">Nombre</th>
-            <th class="text-uppercase text-muted ">Fecha creacion</th>
-            <th class="text-uppercase text-muted "></th>
+                <th class="text-uppercase text-muted ">#</th>
+                <th class="text-uppercase text-muted ">Nombre</th>
+                <th class="text-uppercase text-muted ">Fecha creacion</th>
+                <th class="text-uppercase text-muted "></th>
             </thead>
             <tbody>
-            <td>
-                1
-            </td>
-            <td>
-                Bitacora 1
-            </td>
-            <td>
-                Detalles bitacora 2
-            </td>
-            <td>
-                Editar|Eliminar
-            </td>
+                <td>
+                    1
+                </td>
+                <td>
+                    Bitacora 1
+                </td>
+                <td>
+                    2021-12-12
+                </td>
+                <td>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#agregarBitacora"><i class="fas fa-edit"></i></button>
+                    |
+                    <button class="btn"><i class="fas fa-trash"></i></button>
+                </td>
             </tbody>
         </table>
     </div>

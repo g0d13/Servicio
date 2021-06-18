@@ -5,7 +5,7 @@
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
             <p class="text-muted mb-3 fs-4 fw-bold">Usuarios</p>
-            <a href="#!" class="btn btn-sm btn-primary"  data-bs-toggle="modal" data-bs-target="#agregarBitacora">Agregar</a>
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#agregarBitacora">Agregar</button>
         </div>
         <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
@@ -37,7 +37,9 @@
                     Planta 1
                 </td>
                 <td>
-                    Editar|Eliminar
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#agregarBitacora"><i class="fas fa-edit"></i></button>
+                    |
+                    <button class="btn"><i class="fas fa-trash"></i></button>
                 </td>
             </tbody>
         </table>

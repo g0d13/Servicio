@@ -18,10 +18,10 @@
             <a href="{{route('solicitudes')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Solicitudes</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="{{route('reparaciones')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Reparaciones</a>
+            <a href="{{route('reparaciones')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-hammer me-3" aria-hidden="true"></i></i> Reparaciones</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="{{route('maquinas')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Maquinas</a>
+            <a href="{{route('maquinas')}}" class="text-decoration-none w-100 text-white ms-3" style="font-size: 16px;"><i class="fa fa-tools me-3" aria-hidden="true"></i></i> Maquinas</a>
         </li>
 
         <li class="mb-3 sidebar-item">

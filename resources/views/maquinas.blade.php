@@ -13,7 +13,7 @@
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Modelo</th>
             <th class="text-uppercase text-muted ">Marca</th>
-            <th class="text-uppercase text-muted ">Encargado</th>
+            <th class="text-uppercase text-muted ">Operador</th>
             <th class="text-uppercase text-muted "></th>
             </thead>
             <tbody>
@@ -27,10 +27,12 @@
                 Detalles bitacora 2
             </td>
             <td>
-                Mecanico
+                Operador
             </td>
             <td>
-                Editar|Eliminar
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#agregarBitacora"><i class="fas fa-edit"></i></button>
+                |
+                <button class="btn"><i class="fas fa-trash"></i></button>
             </td>
             </tbody>
         </table>
