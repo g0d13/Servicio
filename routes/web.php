@@ -49,7 +49,7 @@ Route::get('/plantas', function () {
 })->name('plantas');
 
 Route::get('/configuracion', function () {
-    return view('bitacoras');
+    return view('configuracion');
 })->name('configuracion');
 
 require __DIR__.'/auth.php';

@@ -18,12 +18,6 @@
 <body>
 @include('layouts.navigation')
 
-<!-- Page Heading -->
-<header>
-    <div>
-        {{ $header }}
-    </div>
-</header>
 
 <!-- Page Content -->
 <main>
