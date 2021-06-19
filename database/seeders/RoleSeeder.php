@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\PermissionRegistrar;
 
 class RoleSeeder extends Seeder
 {
@@ -17,12 +16,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        app()[PermissionRegistrar::class]->forgetCachedPermissions();
-        $role1 = Role::create(['name' => 'Administrador']);
-        Role::create(['name' => 'Supervisor']);
-        Role::create(['name' => 'Mecanico']);
-
-        $user1 =  \App\Models\User::factory(['email' => 'admin@admin.com']);
-        $user1->assingRole($role1);
+        Rol::create(['nombre' => 'Administrador']);
+        Rol::create(['nombre' => 'Supervisor']);
+        Rol::create(['nombre' => 'Mecanico']);
     }
 }

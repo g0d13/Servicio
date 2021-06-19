@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reparacion extends Model
 {
-    protected $fillable = ['tipo_reparacion'];
+    protected $fillable = ['tipo_reparacion', 'quedo_lista'];
 }
