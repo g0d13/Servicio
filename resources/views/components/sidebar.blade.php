@@ -12,7 +12,7 @@
                 </i> Bitácoras</a>
         </li>
         <li class="mb-3 sidebar-item">
-            <a href="{{route('usuarios')}}" class="text-decoration-none w-100 ms-3 {{ active(route('usuarios'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-user me-3" aria-hidden="true"></i> Usuarios</a>
+            <a href="{{route('usuarios.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('usuarios.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-user me-3" aria-hidden="true"></i> Usuarios</a>
         </li>
         <li class="mb-3 sidebar-item">
             <a href="{{route('solicitudes')}}" class="text-decoration-none w-100 ms-3 {{ active(route('solicitudes'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Solicitudes</a>
