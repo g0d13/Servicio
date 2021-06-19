@@ -15,7 +15,8 @@ class CreateReparacionesTable extends Migration
     {
         Schema::create('reparaciones', function (Blueprint $table) {
             $table->id();
-            $table->boolean('reparada');
+            $table->string('tipo_reparacion')->nullable();
+            $table->dateTime('quedo_lista')->nullable();
             $table->unsignedBigInteger('bitacora_id');
             $table->unsignedBigInteger('mecanico_id');
             $table->foreign('bitacora_id')->references('id')->on('bitacoras');

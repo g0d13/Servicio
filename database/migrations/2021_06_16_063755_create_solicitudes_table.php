@@ -16,8 +16,9 @@ class CreateSolicitudesTable extends Migration
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
             $table->string('prioridad');
+            $table->string('operacion')->nullable();
             $table->unsignedBigInteger('supervisor_id');
-            $table->string('modulo');
+            $table->string('modulo')->nullable();
             $table->foreignId('problema_id')->constrained('problemas');
             $table->foreignId('bitacora_id')->constrained('bitacoras');
             $table->foreignId('maquina_id')->constrained('maquinas');
