@@ -41,4 +41,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+    }
+
+    public function planta()
+    {
+        return $this->belongsTo(Planta::class);
+    }
 }
