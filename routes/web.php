@@ -32,6 +32,8 @@ Route::get('/bitacoras', function () {
 //  rutas de usuarios
 Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
 Route::post('/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
+Route::post('/usuarios/update/{id}', [UserController::class, 'update'])->name('usuarios.update');
+Route::delete('/usuarios/destroy/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 Route::get('/solicitudes', function () {
     return view('solicitudes');

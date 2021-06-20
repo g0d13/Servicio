@@ -7,7 +7,7 @@ use App\Models\Rol;
 use App\Models\User;
 use Illuminate\View\Component;
 
-class usuarioModal extends Component
+class UsuarioModal extends Component
 {
     /**
      * Create a new component instance.

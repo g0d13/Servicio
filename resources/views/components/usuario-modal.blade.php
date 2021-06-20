@@ -9,7 +9,8 @@
                         {{ $idUsuario == 0 ? 'Crear nuevo usuario' : 'Actualizar usuario' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('usuarios.store') }}" method="POST" class="needs-validation" novalidate>
+                <form action="{{ $idUsuario == 0 ? route('usuarios.store') : route('usuarios.update', ['id' => $idUsuario]) }}"
+                    method="POST" class="needs-validation" novalidate>
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
@@ -22,31 +23,51 @@
                         </div>
                         <div class="mb-3">
                             <label for="apellidos" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" value="{{ $usuario->apellidos ?? '' }}" name="apellidos" required>
+                            <input type="text" class="form-control" value="{{ $usuario->apellidos ?? '' }}"
+                                name="apellidos" required>
                             <div class="invalid-feedback">
                                 Los apellidos son requerido
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="correo" class="form-label">Correo</label>
-                            <input type="email" class="form-control" value="{{ $usuario->email ?? '' }}" required name="email">
+                            <input type="email" class="form-control" value="{{ $usuario->email ?? '' }}" required
+                                name="email">
                             <div class="invalid-feedback">
                                 El correo es requerido
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="correo" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" value="{{ $usuario->email ?? '' }}" required name="password" minlength="8">
-                            <div class="invalid-feedback">
-                                La contraseña es requerida y debe ser de al menos 8 caracteres
+                        @if ($usuario)
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" name="password" minlength="8">
                             </div>
-                        </div>
+                        @else
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" value="{{ $usuario->password ?? '' }}"
+                                    required name="password" minlength="8">
+                                <div class="invalid-feedback">
+                                    La contraseña es requerida y debe ser de al menos 8 caracteres
+                                </div>
+                            </div>
+                        @endif
                         <div class="mb-3">
-                            <label for="rol" class="form-label">Planta</label>
-                            <select id="rol" class="form-select form-select" aria-label=".form-select-sm example" name="planta_id">
-                                <option value="" selected>--Selecciona la planta--</option>
+                            <label class="form-label">Planta</label>
+                            <select class="form-select form-select" aria-label=".form-select-sm example"
+                                name="planta_id" required>
+                                @if (!$usuario)
+                                    <option value="" {{ $idUsuario == 0 ? 'selected' : '' }}>--Selecciona la planta--
+                                    </option>
+                                @endif
                                 @foreach ($plantas as $planta)
-                                    <option value="{{ $planta->id }}">{{ $planta->nombre }}</option>
+                                    @if ($usuario)
+                                        <option value="{{ $planta->id }}"
+                                            {{ $usuario->planta->id == $planta->id ? 'selected' : '' }}>
+                                            {{ $planta->nombre }}</option>
+                                    @else
+                                        <option value="{{ $planta->id }}">{{ $planta->nombre }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -55,10 +76,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="rol" class="form-label">Rol</label>
-                            <select id="rol" class="form-select form-select" aria-label=".form-select-sm example" name="rol_id">
-                                <option value="" selected>--Selecciona el rol--</option>
+                            <select id="rol" class="form-select form-select" aria-label=".form-select-sm example"
+                                name="rol_id" required>
+                                @if (!$usuario)
+                                    <option value="">--Selecciona el rol--</option>
+                                @endif
                                 @foreach ($roles as $rol)
-                                    <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                                    @if ($usuario)
+                                        <option value="{{ $rol->id }}"
+                                            {{ $usuario->rol->id == $rol->id ? 'selected' : '' }}>
+                                            {{ $rol->nombre }}</option>
+                                    @else
+                                        <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">

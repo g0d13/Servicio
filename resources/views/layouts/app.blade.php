@@ -16,20 +16,26 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/the.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <style>
-        .bg-white,.card,.modal-content{
-            background-color: white!important;
+        .bg-white,
+        .card,
+        .modal-content {
+            background-color: white !important;
         }
+
     </style>
 
     <style>
         body {
             font-family: 'Nunito', sans-serif !important;
-            background: rgb(245, 245, 245)!important;
+            background: rgb(245, 245, 245) !important;
         }
 
     </style>
@@ -47,10 +53,12 @@
             <x-sidebar></x-sidebar>
         </div>
         {{-- Sidebar en mobile --}}
-        <div class="offcanvas offcanvas-start d-flex flex-column align-content-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas offcanvas-start d-flex flex-column align-content-end" tabindex="-1" id="offcanvasTop"
+            aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header bg-dark">
-                <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
+                <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
             <div class="offcanvas-body p-0 m-0 py-3 bg-dark">
                 <div class="border-end bg-dark">
                     <x-sidebar></x-sidebar>
@@ -60,8 +68,8 @@
 
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
-            <x-topnav >
-                {{$header}}
+            <x-topnav>
+                {{ $header }}
             </x-topnav>
             <!-- Page content-->
             <div class="m-3 mt-4">
@@ -88,6 +96,7 @@
         });
 
     </script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

@@ -39,17 +39,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required|string|min:3',
-            'apellidos' => 'required|string|min:3',
-        ]);
+        // return $request->all();
+        User::create($request->all());
 
-        if ($validator->fails()) {
-            return response()->json([
-                'errores' => $validator->errors()
-            ]);
-            // return redirect()->back()->withErrors($validator)->withInput();
-        }
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -71,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -83,7 +76,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$request->get('password')) {
+            $user->update([
+                'nombre' => $request->get('nombre'),
+                'apellidos' => $request->get('apellidos'),
+                'email' => $request->get('email'),
+                'email' => $request->get('email'),
+                'rol_id' => $request->get('rol_id'),
+                'planta_id' => $request->get('planta_id'),
+            ]);
+        } else {
+            $user->update($request->all());
+        }
+
+
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -94,6 +103,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index');
     }
 }

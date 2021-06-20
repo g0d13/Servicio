@@ -1,5 +1,5 @@
 @php
-    $usuarioAux = null;
+$usuarioAux = null;
 @endphp
 <x-app-layout>
     <x-slot name="header">
@@ -11,7 +11,8 @@
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
             <p class="text-muted mb-3 fs-4 fw-bold">Usuarios</p>
-            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#crearUsuario">Agregar</button>
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                data-bs-target="#crearUsuario">Agregar</button>
         </div>
         <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
@@ -33,9 +34,12 @@
                         <td>{{ $usuario->rol->nombre }}</td>
                         <td>{{ $usuario->planta->nombre }}</td>
                         <td>
-                            <button class="btn" data-bs-toggle="modal" data-bs-target="#actualizarUsuario{{$usuario->id}}"><i class="fas fa-edit"></i></button>
-                            |
-                            <button class="btn"><i class="fas fa-trash"></i></button>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#actualizarUsuario{{ $usuario->id }}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#eliminarRegistro{{ $usuario->id }}">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 @endforeach
@@ -46,6 +50,7 @@
     <x-usuario-modal :idModal="'crearUsuario'"></x-usuario-modal>
 
     @foreach ($usuarios as $usr)
+        <x-eliminar-registro :idModelo="$usr->id" :ruta="'usuarios.destroy'"></x-eliminar-registro>
         <x-usuario-modal :idModal="'actualizarUsuario'.$usr->id" :idUsuario="$usr->id"></x-usuario-modal>
     @endforeach
 </x-app-layout>
