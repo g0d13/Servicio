@@ -24,7 +24,7 @@ class ModalSolicitudes extends Component
         'prioridad' => 'required|numeric|between:1,10',
         'problema' => 'required|numeric',
         'modulo' => 'required',
-        'maquina' => 'required|numeric',
+        'maquina' => 'required',
     ];
 
     public function crearSolicitud() {

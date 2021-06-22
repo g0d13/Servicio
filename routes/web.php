@@ -25,37 +25,37 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware('auth');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 // Route::get('/bitacoras', function () {
 //     return view('bitacoras');
 // })->name('bitacoras');
 
 // ruta de bitacoras
-Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index');
+Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index')->middleware('auth')->middleware('role:1;2');
 
 //  rutas de usuarios
-Route::get('/usuarios', MostrarUsuarios::class)->name('usuarios.index');
+Route::get('/usuarios', MostrarUsuarios::class)->name('usuarios.index')->middleware('auth')->middleware('role:1');
 
 // rutas de solicitudes
-Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index');
+Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index')->middleware('auth')->middleware('role:3');
 
 
-Route::get('/reparaciones', MostrarReparaciones::class)->name('reparaciones.index');
+Route::get('/reparaciones', MostrarReparaciones::class)->name('reparaciones.index')->middleware('auth')->middleware('role:1');
 
-Route::get('/maquinas', MostrarMaquinas::class)->name('maquinas.index');
+Route::get('/maquinas', MostrarMaquinas::class)->name('maquinas.index')->middleware('auth')->middleware('role:1');
 
-Route::get('/plantas', MostrarPlantas::class)->name('plantas.index');
+Route::get('/plantas', MostrarPlantas::class)->name('plantas.index')->middleware('auth')->middleware('role:1');
 
 Route::get('/configuracion', function () {
     return view('configuracion');
-})->name('configuracion');
+})->name('configuracion')->middleware('auth')->middleware('role:1');
 
 require __DIR__.'/auth.php';
