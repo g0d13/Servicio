@@ -18,9 +18,11 @@ class CreateReparacionesTable extends Migration
             $table->string('tipo_reparacion')->nullable();
             $table->dateTime('quedo_lista')->nullable();
             $table->unsignedBigInteger('bitacora_id');
+            $table->unsignedBigInteger('solicitud_id');
             $table->unsignedBigInteger('mecanico_id');
             $table->foreign('bitacora_id')->references('id')->on('bitacoras');
             $table->foreign('mecanico_id')->references('id')->on('users');
+            $table->foreign('solicitud_id')->references('id')->on('solicitudes');
             $table->timestamps();
         });
     }

@@ -1,6 +1,15 @@
 <?php
 
+use App\Http\Controllers\BitacorasController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Bitacoras\MostrarBitacoras;
+use App\Http\Livewire\Maquinas\MostrarMaquinas;
+use App\Http\Livewire\Plantas\MostrarPlantas;
+use App\Http\Livewire\Reparaciones\MostrarReparaciones;
+use App\Http\Livewire\Solicitudes\MostrarSolicitudes;
+use App\Http\Livewire\Usuarios\Index;
+use App\Http\Livewire\Usuarios\MostrarUsuarios;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,31 +34,25 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/bitacoras', function () {
-    return view('bitacoras');
-})->name('bitacoras');
+// Route::get('/bitacoras', function () {
+//     return view('bitacoras');
+// })->name('bitacoras');
+
+// ruta de bitacoras
+Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index');
 
 //  rutas de usuarios
-Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
-Route::post('/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
-Route::post('/usuarios/update/{id}', [UserController::class, 'update'])->name('usuarios.update');
-Route::delete('/usuarios/destroy/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+Route::get('/usuarios', MostrarUsuarios::class)->name('usuarios.index');
 
-Route::get('/solicitudes', function () {
-    return view('solicitudes');
-})->name('solicitudes');
+// rutas de solicitudes
+Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index');
 
-Route::get('/reparaciones', function () {
-    return view('reparaciones');
-})->name('reparaciones');
 
-Route::get('/maquinas', function () {
-    return view('maquinas');
-})->name('maquinas');
+Route::get('/reparaciones', MostrarReparaciones::class)->name('reparaciones.index');
 
-Route::get('/plantas', function () {
-    return view('plantas');
-})->name('plantas');
+Route::get('/maquinas', MostrarMaquinas::class)->name('maquinas.index');
+
+Route::get('/plantas', MostrarPlantas::class)->name('plantas.index');
 
 Route::get('/configuracion', function () {
     return view('configuracion');

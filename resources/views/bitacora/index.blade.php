@@ -5,7 +5,7 @@
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
             <p class="text-muted mb-3 fs-4 fw-bold">Bitacoras</p>
-            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#agregarBitacora">Agregar</button>
+            <a href="{{ route('bitacoras.create') }}" class="btn btn-sm btn-primary">Agregar</a>
         </div>
         <table class="table-responsive-lg table table-borderless align-middle">
             <thead class="border-top border-bottom">

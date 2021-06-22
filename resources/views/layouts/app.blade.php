@@ -23,6 +23,8 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Scripts -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @livewireScripts
     <style>
         .bg-white,
         .card,
@@ -69,7 +71,7 @@
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <x-topnav>
-                {{ $header }}
+                {{ $header ?? '' }}
             </x-topnav>
             <!-- Page content-->
             <div class="m-3 mt-4">
@@ -81,6 +83,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         window.addEventListener('DOMContentLoaded', event => {

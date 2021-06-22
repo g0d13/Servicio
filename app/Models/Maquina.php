@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Maquina extends Model
 {
     use HasFactory;
-    protected $fillable = ['modelo', 'marca', 'operador'];
+    protected $fillable = ['id', 'modelo', 'marca', 'operador'];
+    protected $casts = [
+        'id' => 'string'
+    ];
 }
