@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bitacora;
+use App\Models\Maquina;
+use App\Models\Problema;
+use App\Models\Solicitud;
 use App\Models\User;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
-class BitacorasController extends Controller
+class SolicitudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +19,9 @@ class BitacorasController extends Controller
      */
     public function index()
     {
-        return View('bitacora.index');
+        $solicitudes = Solicitud::all();
+
+        return View('solicitudes.index');
     }
 
     /**
@@ -26,16 +31,22 @@ class BitacorasController extends Controller
      */
     public function create()
     {
-        $mecanicos = User::where('rol_id', 3)->get();
-        return View('bitacora.bitacora', [
-            'mecanicos' => $mecanicos
+        $problemas = Problema::all();
+        $supervisores = User::where('rol_id', 2)->get();
+        $maquinas = Maquina::all();
+        $bitacoras = Bitacora::all();
+        return View('solicitudes.solicitud', [
+            'problemas' => $problemas,
+            'supervisores' => $supervisores,
+            'maquinas' => $maquinas,
+            'bitacoras' => $bitacoras
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,10 +57,10 @@ class BitacorasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Bitacora $bitacora
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Bitacora $bitacora)
+    public function show($id)
     {
         //
     }
@@ -57,10 +68,10 @@ class BitacorasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Bitacora $bitacora
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bitacora $bitacora)
+    public function edit($id)
     {
         //
     }
@@ -68,11 +79,11 @@ class BitacorasController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Bitacora $bitacora
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bitacora $bitacora)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +91,10 @@ class BitacorasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Bitacora $bitacora
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bitacora $bitacora)
+    public function destroy($id)
     {
         //
     }

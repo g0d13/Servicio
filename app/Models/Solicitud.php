@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
-    protected $fillable = ['prioridad', 'modulo'];
+    protected $fillable = ['prioridad', 'modulo', 'problema_id', 'supervisor_id', 'bitacora_id', 'maquina_id', 'llegada_mecanico'];
+    protected $table = "solicitudes";
 
     public function maquina()
     {
@@ -26,5 +27,9 @@ class Solicitud extends Model
     public function problema()
     {
         return $this->hasOne(Problema::class, 'id', 'problema_id');
+    }
+
+    public function reparacion() {
+        return $this->belongsTo(Reparacion::class, 'id', 'solicitud_id');
     }
 }

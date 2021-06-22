@@ -18,7 +18,6 @@ class CreateBitacorasTable extends Migration
             $table->string('nombre');
             $table->string('detalles');
             $table->unsignedBigInteger('mecanico_id');
-            $table->string('tipos');
             $table->foreign('mecanico_id')->references('id')->on('users');
             $table->timestamps();
         });

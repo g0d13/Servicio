@@ -9,7 +9,7 @@ class Bitacora extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'detalles'];
+    protected $fillable = ['nombre', 'detalles', 'mecanico_id'];
 
     public function mecanico()
     {

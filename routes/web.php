@@ -1,6 +1,15 @@
 <?php
 
+use App\Http\Controllers\BitacorasController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Bitacoras\MostrarBitacoras;
+use App\Http\Livewire\Maquinas\MostrarMaquinas;
+use App\Http\Livewire\Plantas\MostrarPlantas;
+use App\Http\Livewire\Reparaciones\MostrarReparaciones;
+use App\Http\Livewire\Solicitudes\MostrarSolicitudes;
+use App\Http\Livewire\Usuarios\Index;
+use App\Http\Livewire\Usuarios\MostrarUsuarios;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,43 +25,37 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware('auth');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
-Route::get('/bitacoras', function () {
-    return view('bitacoras');
-})->name('bitacoras');
+// Route::get('/bitacoras', function () {
+//     return view('bitacoras');
+// })->name('bitacoras');
+
+// ruta de bitacoras
+Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index')->middleware('auth')->middleware('role:1;2');
 
 //  rutas de usuarios
-Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
-Route::post('/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
-Route::post('/usuarios/update/{id}', [UserController::class, 'update'])->name('usuarios.update');
-Route::delete('/usuarios/destroy/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+Route::get('/usuarios', MostrarUsuarios::class)->name('usuarios.index')->middleware('auth')->middleware('role:1');
 
-Route::get('/solicitudes', function () {
-    return view('solicitudes');
-})->name('solicitudes');
+// rutas de solicitudes
+Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index')->middleware('auth')->middleware('role:3');
 
-Route::get('/reparaciones', function () {
-    return view('reparaciones');
-})->name('reparaciones');
 
-Route::get('/maquinas', function () {
-    return view('maquinas');
-})->name('maquinas');
+Route::get('/reparaciones', MostrarReparaciones::class)->name('reparaciones.index')->middleware('auth')->middleware('role:1');
 
-Route::get('/plantas', function () {
-    return view('plantas');
-})->name('plantas');
+Route::get('/maquinas', MostrarMaquinas::class)->name('maquinas.index')->middleware('auth')->middleware('role:1');
+
+Route::get('/plantas', MostrarPlantas::class)->name('plantas.index')->middleware('auth')->middleware('role:1');
 
 Route::get('/configuracion', function () {
     return view('configuracion');
-})->name('configuracion');
+})->name('configuracion')->middleware('auth')->middleware('role:1');
 
 require __DIR__.'/auth.php';

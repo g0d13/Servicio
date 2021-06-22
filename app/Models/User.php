@@ -53,4 +53,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Planta::class);
     }
+
+    public function hasRole($roles) {
+        $roles = $roles;
+        $rolesArray = explode(';',$roles);
+
+        foreach ($rolesArray as $r) {
+            if ($this->rol_id == $r) return true;
+        }
+
+        return false;
+    }
 }
