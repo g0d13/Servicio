@@ -3,20 +3,20 @@
     <div class="modal-dialog">
         <form class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar o editar bitacora</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear nueva solicitud</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Prioridad</label>
-                    <input type="number" class="form-control" wire:model="prioridad">
+                    <label for="prioridad" class="form-label">Prioridad</label>
+                    <input type="number" min="0" max="10" name="prioridad" class="form-control" wire:model="prioridad">
                     @error('prioridad')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Problema</label>
-                    <select wire:model="problema" class="form-control">
+                    <label for="problema" class="form-label">Problema</label>
+                    <select wire:model="problema" name="problema" class="form-control">
                         <option value="">--Selecciona un problema--</option>
                         @foreach ($problemas as $problema)
                             <option value="{{ $problema->id }}">{{ $problema->nombre }}</option>

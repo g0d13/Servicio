@@ -20,6 +20,7 @@ class CreateBitacorasTable extends Migration
             $table->unsignedBigInteger('mecanico_id');
             $table->foreign('mecanico_id')->references('id')->on('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

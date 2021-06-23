@@ -19,6 +19,7 @@ class CreateMaquinasTable extends Migration
             $table->string('marca');
             $table->string('operador');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
