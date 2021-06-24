@@ -16,20 +16,7 @@
             <div class="d-flex align-items-center justify-content-center me-3 flex-column d-none d-md-block">
                 <p class="m-0 p-0 fw-bold">{{ auth()->user()->nombre }}</p>
                 <p class="text-muted mx-5 m-0 p-0">
-                    @switch(auth()->user()->rol_id)
-                        @case(1)
-                            <small>Administrador</small>
-                            @break
-                        @case(2)
-                            <small>Supervisor</small>
-                            @break
-                        @case(3)
-                            <small>Mecánico</small>
-                            @break
-
-                        @default
-
-                    @endswitch
+                    <small>{{Auth::user()->rol->nombre}}</small>
                 </p>
             </div>
             <div class="btn-group dropstart d-flex">
@@ -38,7 +25,6 @@
                     <div class="avatar avatar-xl">
                         <div style="height: 40px;width: 40px; background-color: darkslategray;text-align: center;color: white;font-weight: bold;text-transform: uppercase;border-radius: 50%;padding: 10px">
                             <span>{{substr(auth()->user()->nombre ?? '', 0, 1)}}</span>
-
                         </div>
                     </div>
                 </div>

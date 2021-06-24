@@ -79,28 +79,20 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row">
-        <div class="col-xl-8 col-lg-8">
-            <x-table :headers="['Id', 'Nombre', 'Apellido', 'Edad', 'Correo']" :dataArray="[
-                0 => [
-                    'Id' => 1,
-                    'Nombre' => 'Juan',
-                    'Apellido' => 'Perez',
-                    'Edad' => '20',
-                    'Correo' => 'Correo@gmail.com',
-                ]
-            ]" :title="'Bitacoras'"></x-table>
-        </div>
-        <div class="col-xl-4 col-lg-4">
-            <x-table :headers="['Id', 'Nombre', 'Apellido', 'Edad', 'Correo']" :dataArray="[
-                0 => [
-                    'Id' => 1,
-                    'Nombre' => 'Juan',
-                    'Apellido' => 'Perez',
-                    'Edad' => '20',
-                    'Correo' => 'Correo@gmail.com',
-                ]
-            ]" :title="'Mecanicos'"></x-table>
-        </div>
-    </div> --}}
+    <div class="row mb-4">
+        @foreach($bitacoras as $bitacora)
+            <div class="col-xl-6 col-lg-12 mb-4">
+                <div class="shadow bg-success mb-4 mb-xl-0" style="color: white!important;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase mb-0">{{$bitacora->nombre}}</h5>
+                                <span>{{$bitacora->detalles}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </x-app-layout>

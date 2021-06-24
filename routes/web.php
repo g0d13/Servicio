@@ -10,6 +10,7 @@ use App\Http\Livewire\Reparaciones\MostrarReparaciones;
 use App\Http\Livewire\Solicitudes\MostrarSolicitudes;
 use App\Http\Livewire\Usuarios\Index;
 use App\Http\Livewire\Usuarios\MostrarUsuarios;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,15 +25,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return redirect()->route('dashboard');
 })->middleware('auth');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])
+    ->name('dashboard')->middleware('auth');
 
 // Route::get('/bitacoras', function () {
 //     return view('bitacoras');
@@ -58,4 +58,10 @@ Route::get('/configuracion', function () {
     return view('configuracion');
 })->name('configuracion')->middleware('auth')->middleware('role:1');
 
-require __DIR__.'/auth.php';
+Route::get('/test', function () {
+    return \App\Models\Bitacora::whereDoesntHave('solicitudes.reparacion', function (Builder $query) {
+            return $query->whereNotNull('quedo_lista');
+        })->get();
+});
+
+require __DIR__ . '/auth.php';

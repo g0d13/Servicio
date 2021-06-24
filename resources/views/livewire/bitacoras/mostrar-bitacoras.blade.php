@@ -12,6 +12,9 @@
             <th class="text-uppercase text-muted ">Nombre</th>
             <th class="text-uppercase text-muted ">Detalles</th>
             <th class="text-uppercase text-muted ">Mecanico encargado</th>
+            @if(auth()->user()->rol_id == 1)
+                <th class="text-uppercase text-muted ">Status</th>
+            @endif
             <th class="text-uppercase text-muted "></th>
         </thead>
         <tbody>
@@ -20,7 +23,10 @@
                     <td>{{ $bitacora->id }}</td>
                     <td>{{ $bitacora->nombre }}</td>
                     <td>{{ $bitacora->detalles }}</td>
-                    <td>{{ $bitacora->mecanico->nombre }} {{ $bitacora->mecanico->apellidos }}</td>
+                    <td>{{ $bitacora->mecanico->nombre ?? '' }} {{ $bitacora->mecanico->apellidos ?? '' }}</td>
+                    @if(auth()->user()->rol_id == 1)
+                        <td><span class="badge bg-success">ok</span></td>
+                    @endif
                     <td>
                         <button class="btn" wire:click="$emit('mostrarModalActualizarBitacora', {{ $bitacora->id }})">
                             <i class="fas fa-edit"></i>

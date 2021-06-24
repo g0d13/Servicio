@@ -14,6 +14,10 @@ class Bitacora extends Model
 
     public function mecanico()
     {
+        //Bitacora::find(2)->solicitudes->count()
         return $this->hasOne(User::class, 'id', 'mecanico_id');
+    }
+    public function solicitudes(){
+        return $this->hasMany(Solicitud::class);
     }
 }
