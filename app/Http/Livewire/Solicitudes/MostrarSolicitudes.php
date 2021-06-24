@@ -33,7 +33,7 @@ class MostrarSolicitudes extends Component
 
     public function render()
     {
-        $solicitudes = Solicitud::with('supervisor')->with('maquina')->with('bitacora')->with('problema')->with('reparacion')->get();
+        $solicitudes = Solicitud::all();
         return view('livewire.solicitudes.mostrar-solicitudes', [
             'solicitudes' => $solicitudes
         ]);
