@@ -13,7 +13,7 @@
             <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Nombre</th>
-            <th class="text-uppercase text-muted ">Detalles</th>
+            <th class="text-uppercase text-muted ">Planta</th>
             <th class="text-uppercase text-muted ">Mecanico encargado</th>
             @if(auth()->user()->rol_id == 1)
                 <th class="text-uppercase text-muted ">Status</th>
@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ $bitacora->id }}</td>
                     <td>{{ $bitacora->nombre }}</td>
-                    <td>{{ $bitacora->detalles }}</td>
+                    <td>Planta {{ $bitacora->planta_id }}</td>
                     <td>{{ $bitacora->mecanico->nombre ?? '' }} {{ $bitacora->mecanico->apellidos ?? '' }}</td>
                     @if(auth()->user()->rol_id == 1)
                         <td><span class="badge bg-success">ok</span></td>

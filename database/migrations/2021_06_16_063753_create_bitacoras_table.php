@@ -16,7 +16,6 @@ class CreateBitacorasTable extends Migration
         Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('detalles');
             $table->unsignedBigInteger('mecanico_id');
             $table->foreign('mecanico_id')->references('id')->on('users');
             $table->foreignId('planta_id')->constrained('plantas');

@@ -10,7 +10,7 @@ class Bitacora extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['nombre', 'detalles', 'mecanico_id', 'planta_id'];
+    protected $fillable = ['nombre', 'mecanico_id', 'planta_id'];
 
     public function mecanico()
     {
