@@ -53,3 +53,21 @@
 
 <livewire:bitacoras.modal-bitacora/>
 <livewire:solicitudes.modal-solicitudes/>
+<script>
+    Livewire.on('alertaEliminarBitacora', id => {
+        Swal.fire({
+            title: '¿Dese eliminar esta bitacora?',
+            text: "Est acción no puede revertirse",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.emit('eliminarBitacora', id);
+            }
+        })
+    });
+</script>
