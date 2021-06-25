@@ -79,20 +79,4 @@
             </div>
         </div>
     </div>
-    <div class="row mb-4">
-        @foreach($bitacoras as $bitacora)
-            <div class="col-xl-6 col-lg-12 mb-4">
-                <div class="shadow bg-success mb-4 mb-xl-0" style="color: white!important;">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title text-uppercase mb-0">{{$bitacora->nombre}}</h5>
-                                <span>{{$bitacora->detalles}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
 </x-app-layout>
