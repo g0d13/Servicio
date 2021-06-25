@@ -8,8 +8,9 @@
             <button class="btn btn-sm btn-primary" wire:click="$emit('mostrarModalCrearBitacora')">Agregar</button>
         @endif
     </div>
-    <table class="table-responsive-lg table table-borderless align-middle">
-        <thead class="border-top border-bottom">
+    <div class="table-responsive">
+        <table class=" table table-borderless align-middle">
+            <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Nombre</th>
             <th class="text-uppercase text-muted ">Detalles</th>
@@ -18,8 +19,8 @@
                 <th class="text-uppercase text-muted ">Status</th>
             @endif
             <th class="text-uppercase text-muted "></th>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($bitacoras as $bitacora)
                 <tr>
                     <td>{{ $bitacora->id }}</td>
@@ -45,8 +46,9 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <livewire:bitacoras.modal-bitacora/>

@@ -6,8 +6,10 @@
         <p class="text-muted mb-3 fs-4 fw-bold">Usuarios</p>
         <button class="btn btn-sm btn-primary" wire:click="$emit('mostrarModalCrearUsuario')">Agregar</button>
     </div>
-    <table class="table table-borderless align-middle">
-        <thead class="border-top border-bottom">
+    <div class="table-responsive">
+
+        <table class="table table-borderless align-middle">
+            <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Nombre</th>
             <th class="text-uppercase text-muted ">Apellidos</th>
@@ -15,8 +17,8 @@
             <th class="text-uppercase text-muted ">rol</th>
             <th class="text-uppercase text-muted ">planta</th>
             <th class="text-uppercase text-muted ">Acciones</th>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($usuarios as $usuario)
                 <tr>
                     <td>{{ $usuario->id }}</td>
@@ -30,14 +32,15 @@
                             <i class="fas fa-edit"></i>
                         </button>
                         <button type="button" class="btn"
-                            wire:click.prevent="$emit('alertaEliminarUsuario', {{ $usuario->id }})">
+                                wire:click.prevent="$emit('alertaEliminarUsuario', {{ $usuario->id }})">
                             <i class="fas fa-trash"></i>
                         </button>
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 <livewire:usuarios.modal-usuario />
 

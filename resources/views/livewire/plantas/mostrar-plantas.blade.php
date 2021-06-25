@@ -6,15 +6,16 @@
         <p class="text-muted mb-3 fs-4 fw-bold">Plantas</p>
         <button wire:click="$emit('mostrarModalCrearPlanta')" class="btn btn-sm btn-primary">Agregar</button>
     </div>
-    <table class="table table-borderless align-middle">
+    <div class="table-responsive">
+        <table class="table table-borderless align-middle">
 
-        <thead class="border-top border-bottom">
+            <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Nombre</th>
             <th class="text-uppercase text-muted ">Fecha creacion</th>
             <th class="text-uppercase text-muted "></th>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($plantas as $planta)
                 <tr>
                     <td>{{ $planta->id }}</td>
@@ -27,8 +28,9 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <livewire:plantas.modal-plantas>

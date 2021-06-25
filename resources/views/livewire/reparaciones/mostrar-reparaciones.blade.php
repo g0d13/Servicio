@@ -5,15 +5,16 @@
     <div class="d-flex align-content-between align-items-center justify-content-between">
         <p class="text-muted mb-3 fs-4 fw-bold">Reparaciones</p>
     </div>
-    <table class="table table-borderless align-middle">
-        <thead class="border-top border-bottom">
+    <div class="table-responsive">
+        <table class="table table-borderless align-middle">
+            <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted ">#</th>
             <th class="text-uppercase text-muted ">Tipo reparacion</th>
             <th class="text-uppercase text-muted ">Quedo lista</th>
             <th class="text-uppercase text-muted ">Mecanico</th>
             <th class="text-uppercase text-muted ">Bitacora</th>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($reparaciones as $reparacion)
                 <tr>
                     <td>{{ $reparacion->id }}</td>
@@ -23,6 +24,7 @@
                     <td>{{ $reparacion->bitacora->nombre }}</td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -1,50 +1,85 @@
-<div class="sidebar-heading mb-3">
-    <p class="fw-bold text-center text-white fs-3">Dashboard</p>
-</div>
-<div class="list-group list-group-flush">
-    <ul class="list-unstyled ps-0 ms-3 ms-md-0">
-        <li class="mb-3">
-            <a href="{{route('dashboard')}}" class="text-decoration-none w-100 ms-3 sidebar-item {{ active(route('dashboard'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-home me-3" aria-hidden="true"></i> Inicio</a>
-        </li>
-        {{-- Acceso sólo a administrador y supervisor --}}
-        @if (auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('bitacoras.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('bitacoras.index'), Request::url()) }}" style="font-size: 16px;">
-                    <i class="fa fa-book me-3" aria-hidden="true">
-                    </i> Bitácoras</a>
+<nav id="sidebarMenu" class="sidebar d-md-block bg-primary text-white collapse" data-simplebar>
+    <div class="sidebar-inner px-4 pt-3">
+        <div
+            class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+            <div class="d-flex align-items-center">
+                <div class="user-avatar lg-avatar mr-4">
+                    <img src="/assets/img/team/profile-picture-3.jpg"
+                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                </div>
+                <div class="d-block">
+                    <h2 class="h6">Hola, {{Auth::user()->nombre}}</h2>
+                    <a href="/pages/examples/sign-in.html" class="btn btn-secondary text-dark btn-xs"><span
+                            class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                </div>
+            </div>
+            <div class="collapse-close d-md-none">
+                <a href="#sidebarMenu" class="fas fa-times" data-toggle="collapse"
+                   data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
+                   aria-label="Toggle navigation"></a>
+            </div>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item {{ active(route('dashboard'), Request::url()) }}">
+                <a href="{{route('dashboard')}}" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-chart-pie"></span></span>
+                    <span>Inicio</span>
+                </a>
             </li>
-        @endif
-        {{-- Acceso sólo al administrador --}}
-        @if (auth()->user()->rol_id == 1)
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('usuarios.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('usuarios.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-user me-3" aria-hidden="true"></i> Usuarios</a>
-            </li>
-        @endif
-        {{-- Acceso sólo al mecánico --}}
-        @if (auth()->user()->rol_id == 3)
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('solicitudes.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('solicitudes.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-paperclip me-3" aria-hidden="true"></i></i> Solicitudes</a>
-            </li>
-        @endif
+            <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
+            @if (auth()->user()->rol_id == 1 || auth()->user()->rol_id == 2)
+                <li class="nav-item {{ active(route('bitacoras.index'), Request::url()) }}">
+                    <a href="{{route('bitacoras.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-book "></span></span>
+                        <span>Bitácoras</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->rol_id == 1)
+                <li class="nav-item {{ active(route('usuarios.index'), Request::url()) }}">
+                    <a href="{{route('usuarios.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-user"></span></span>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->rol_id == 3)
+                <li class="nav-item {{ active(route('solicitudes.index'), Request::url()) }}">
+                    <a href="{{route('solicitudes.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-paperclip"></span></span>
+                        <span>Solicitudes</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->rol_id == 1)
+                <li class="nav-item {{ active(route('reparaciones.index'), Request::url()) }}">
+                    <a href="{{route('reparaciones.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-hammer"></span></span>
+                        <span>Reparaciones</span>
+                    </a>
+                </li>
+            @endif
+            @if (auth()->user()->rol_id == 1)
+                <li class="nav-item {{ active(route('maquinas.index'), Request::url()) }}">
+                    <a href="{{route('maquinas.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-tools"></span></span>
+                        <span>Maquinas</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ active(route('plantas.index'), Request::url()) }}">
+                    <a href="{{route('plantas.index')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-building"></span></span>
+                        <span>Plantas</span>
+                    </a>
+                </li>
+                <li class="nav-item {{ active(route('configuracion'), Request::url()) }}">
+                    <a href="{{route('configuracion')}}" class="nav-link">
+                        <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
+                        <span>Configuracion</span>
+                    </a>
+                </li>
+            @endif
 
-        @if (auth()->user()->rol_id == 1)
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('reparaciones.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('reparaciones.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-hammer me-3" aria-hidden="true"></i></i> Reparaciones</a>
-            </li>
-        @endif
-
-        @if (auth()->user()->rol_id == 1)
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('maquinas.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('maquinas.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-tools me-3" aria-hidden="true"></i></i> Maquinas</a>
-            </li>
-
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('plantas.index')}}" class="text-decoration-none w-100 ms-3 {{ active(route('plantas.index'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-building me-3" aria-hidden="true"></i> Plantas</a>
-            </li>
-            <li class="mb-3 sidebar-item">
-                <a href="{{route('configuracion')}}" class="text-decoration-none w-100 ms-3 {{ active(route('configuracion'), Request::url()) }}" style="font-size: 16px;"><i class="fa fa-cog me-3" aria-hidden="true"></i> Configuración</a>
-            </li>
-        @endif
-
-    </ul>
-</div>
+        </ul>
+    </div>
+</nav>

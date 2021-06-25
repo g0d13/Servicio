@@ -3,9 +3,9 @@
         function active($path, $current_path)
         {
             if ($path == $current_path) {
-                return 'item-active';
+                return 'active';
             } else {
-                return 'text-white';
+                return '';
             }
         }
     }

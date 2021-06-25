@@ -4,7 +4,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ $titulo }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form>
@@ -51,7 +53,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="correo" class="form-label">Rol</label>
+                            <label for="correo" class="form-label">Planta</label>
                             <select wire:model="planta" class="form-control">
                                 <option value="">--Seleccione una planta--</option>
                                 @foreach ($plantas as $planta)
