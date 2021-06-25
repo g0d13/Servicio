@@ -38,10 +38,9 @@ class MostrarSolicitudes extends Component
         $userId = Auth::user()->id;
         $solicitudes = Solicitud::when($rol == 1, function ($query) use($userId){
             $query->all();
-        })->
-            when($rol === 2, function ($query) use($userId){
-            $query->where('supervisor_id', $userId);
-        });
+        })->when($rol === 2, function ($query) use($userId){
+            $query->where('supervisor_id', $userId)->whereDoesntHave('reparacion');
+        })->get();
         if ($rol == 3){
             $solicitudes = Bitacora::where('mecanico_id', $userId)->first()->solicitudes ?? [];
         }

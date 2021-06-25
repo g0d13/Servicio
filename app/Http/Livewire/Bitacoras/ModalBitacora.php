@@ -15,6 +15,7 @@ class ModalBitacora extends Component
     public $detalles;
     public $mecanico;
     public $planta;
+    public $plantaSeleccionada = 0;
 
     public function crearBitacora() {
         $this->validate( [
@@ -38,6 +39,9 @@ class ModalBitacora extends Component
         return redirect()->route('bitacoras.index');
     }
 
+    public function updatingPlanta($val){
+        $this->plantaSeleccionada = $val;
+    }
 
     public function actualizarBitacora() {
         $this->validate( [
@@ -86,7 +90,9 @@ class ModalBitacora extends Component
 
     public function render()
     {
-        $mecanicos = User::where('rol_id', 3)->get();
+        $mecanicos = User::when($this->plantaSeleccionada != 0, function ($query){
+            $query->where('planta_id', $this->plantaSeleccionada);
+        })->where('rol_id', 3)->get();
         $plantas = Planta::all();
         return view('livewire.bitacoras.modal-bitacora', [
             'mecanicos' => $mecanicos,
