@@ -34,19 +34,6 @@
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="planta" class="form-label">Planta</label>
-                    <select id="planta" class="form-select form-select" wire:model="planta">
-                        <option>--Selecciona una planta--</option>
-                        @foreach ($plantas as $planta)
-                            <option value="{{ $planta->id }}">{{ $planta->nombre }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('planta')
-                    <span class="text-danger fw-bold">{{ $message }}</span>
-                    @enderror
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

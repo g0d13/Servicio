@@ -21,19 +21,17 @@ class ModalBitacora extends Component
             'nombre' => 'required|min:3',
             'detalles' => 'required',
             'mecanico' => 'required|numeric',
-            'planta' => 'required|numeric'
         ], null,  [
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico' => $this->mecanico,
-            'planta' => $this->planta
         ]);
-
+        $planta = User::find($this->mecanico)->planta_id;
         Bitacora::create([
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico_id' => $this->mecanico,
-            'planta_id' => $this->planta
+            'planta_id' => $planta
         ]);
 
         return redirect()->route('bitacoras.index');
@@ -45,19 +43,17 @@ class ModalBitacora extends Component
             'nombre' => 'required|min:3',
             'detalles' => 'required',
             'mecanico' => 'required|numeric',
-            'planta' => 'required|numeric'
         ], null,  [
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico' => $this->mecanico,
-            'planta' => $this->planta
         ]);
-
+        $planta = User::find($this->mecanico)->planta_id;
         $this->bitacora->update([
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico_id' => $this->mecanico,
-            'planta_id' => $this->planta
+            'planta_id' => $planta
         ]);
 
         return redirect()->route('bitacoras.index');
@@ -84,7 +80,6 @@ class ModalBitacora extends Component
         $this->nombre = null;
         $this->detalles = null;
         $this->mecanico = null;
-        $this->planta = null;
     }
 
     public function render()
