@@ -39,8 +39,9 @@ class MostrarSolicitudes extends Component
         $solicitudes = Solicitud::when($rol === 2, function ($query) use($userId){
             $query->where('supervisor_id', $userId)->whereDoesntHave('reparacion');
         })->get();
-        if ($rol == 3){
-            $solicitudes = Bitacora::where('mecanico_id', $userId)->first()->solicitudes ?? [];
+
+        if ($rol === 3){
+            $solicitudes = Solicitud::whereHas('bitacora', function ($query) use($userId){$query->where('mecanico_id', $userId);})->get();
         }
         return view('livewire.solicitudes.mostrar-solicitudes', [
             'solicitudes' => $solicitudes
