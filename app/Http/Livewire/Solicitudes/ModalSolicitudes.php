@@ -17,12 +17,13 @@ class ModalSolicitudes extends Component
     public $maquina;
     public $solicitud;
     public $bitacora;
-
+    public $operacion;
     protected $listeners = ['resetearErrores', 'mostrarModalSolicitud'];
 
     protected $rules = [
         'prioridad' => 'required|numeric|between:1,10',
         'problema' => 'required|numeric',
+        'operacion' => 'required',
         'modulo' => 'required',
         'maquina' => 'required',
     ];
@@ -32,6 +33,7 @@ class ModalSolicitudes extends Component
 
         Solicitud::create([
             'prioridad' => $this->prioridad,
+            'operacion' => $this->operacion,
             'supervisor_id' => Auth::user()->id,
             'modulo' => $this->modulo,
             'problema_id' => $this->problema,
@@ -56,6 +58,7 @@ class ModalSolicitudes extends Component
         $this->maquina = null;
         $this->bitacora = null;
         $this->solicitud = null;
+        $this->operacion = null;
 
         // $this->emit('ocultarModalBitacora');
     }

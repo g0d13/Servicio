@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
-    protected $fillable = ['prioridad', 'modulo', 'problema_id', 'supervisor_id', 'bitacora_id', 'maquina_id', 'llegada_mecanico'];
+    protected $fillable = ['prioridad', 'modulo', 'problema_id', 'supervisor_id', 'bitacora_id', 'maquina_id', 'llegada_mecanico', 'operacion'];
     protected $table = "solicitudes";
 
     public function maquina()

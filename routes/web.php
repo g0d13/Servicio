@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\BitacoraExport;
 use App\Http\Controllers\BitacorasController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\UserController;
@@ -10,9 +11,14 @@ use App\Http\Livewire\Reparaciones\MostrarReparaciones;
 use App\Http\Livewire\Solicitudes\MostrarSolicitudes;
 use App\Http\Livewire\Usuarios\Index;
 use App\Http\Livewire\Usuarios\MostrarUsuarios;
+use App\Models\Bitacora;
+use App\Models\Solicitud;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
+
+use Maatwebsite\Excel\Facades\Excel;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,4 +70,9 @@ Route::get('/test', function () {
         })->get();
 });
 
+Route::get('/descargar', function () {
+
+    return Excel::download(new BitacoraExport, 'users.xls');
+
+});
 require __DIR__ . '/auth.php';

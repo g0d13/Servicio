@@ -27,6 +27,13 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="problema" class="form-label">Operacion</label>
+                    <input type="text" class="form-control" wire:model="operacion">
+                    @error('operacion')
+                        <span class="text-danger fw-bold">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label for="nombre" class="form-label">Módulo</label>
                     <input type="text" class="form-control" wire:model="modulo">
                     @error('modulo')
