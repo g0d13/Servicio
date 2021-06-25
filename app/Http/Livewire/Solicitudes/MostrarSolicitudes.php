@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Solicitudes;
 
+use App\Models\Bitacora;
 use App\Models\Reparacion;
 use App\Models\Solicitud;
 use Carbon\Carbon;
@@ -33,7 +34,17 @@ class MostrarSolicitudes extends Component
 
     public function render()
     {
-        $solicitudes = Solicitud::all();
+        $rol = Auth::user()->rol_id;
+        $userId = Auth::user()->id;
+        $solicitudes = Solicitud::when($rol == 1, function ($query) use($userId){
+            $query->all();
+        })->
+            when($rol === 2, function ($query) use($userId){
+            $query->where('supervisor_id', $userId);
+        });
+        if ($rol == 3){
+            $solicitudes = Bitacora::where('mecanico_id', $userId)->first()->solicitudes ?? [];
+        }
         return view('livewire.solicitudes.mostrar-solicitudes', [
             'solicitudes' => $solicitudes
         ]);

@@ -29,7 +29,7 @@
                         <td>Máquina {{ $solicitud->maquina->id }}</td>
                         <td>{{ $solicitud->bitacora->nombre }}</td>
                         <td>
-                            @if(auth()->user()->rol_id == 2)
+                            @if(auth()->user()->rol_id == 2 && !$solicitud->llegada_mecanico)
                                 <button class="btn" id="btnHoraLlegadaMecanico" data-solicitud="{{ $solicitud->id }}">
                                     <i class="far fa-clock"></i>
                                 </button>
