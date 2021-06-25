@@ -51,7 +51,7 @@ Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index')->midd
 Route::get('/usuarios', MostrarUsuarios::class)->name('usuarios.index')->middleware('auth')->middleware('role:1');
 
 // rutas de solicitudes
-Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index')->middleware('auth')->middleware('role:3;2');
+Route::get('/solicitudes', MostrarSolicitudes::class)->name('solicitudes.index')->middleware('auth');
 
 
 Route::get('/reparaciones', MostrarReparaciones::class)->name('reparaciones.index')->middleware('auth')->middleware('role:1');

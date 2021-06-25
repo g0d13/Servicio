@@ -43,14 +43,12 @@
                     </a>
                 </li>
             @endif
-            @if (auth()->user()->rol_id == 3 || auth()->user()->rol_id == 2)
-                <li class="nav-item {{ active(route('solicitudes.index'), Request::url()) }}">
-                    <a href="{{route('solicitudes.index')}}" class="nav-link">
-                        <span class="sidebar-icon"><span class="fas fa-paperclip"></span></span>
-                        <span>Solicitudes</span>
-                    </a>
-                </li>
-            @endif
+            <li class="nav-item {{ active(route('solicitudes.index'), Request::url()) }}">
+                <a href="{{route('solicitudes.index')}}" class="nav-link">
+                    <span class="sidebar-icon"><span class="fas fa-paperclip"></span></span>
+                    <span>Solicitudes</span>
+                </a>
+            </li>
             @if (auth()->user()->rol_id == 1)
                 <li class="nav-item {{ active(route('reparaciones.index'), Request::url()) }}">
                     <a href="{{route('reparaciones.index')}}" class="nav-link">

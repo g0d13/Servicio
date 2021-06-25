@@ -36,9 +36,7 @@ class MostrarSolicitudes extends Component
     {
         $rol = Auth::user()->rol_id;
         $userId = Auth::user()->id;
-        $solicitudes = Solicitud::when($rol == 1, function ($query) use($userId){
-            $query->all();
-        })->when($rol === 2, function ($query) use($userId){
+        $solicitudes = Solicitud::when($rol === 2, function ($query) use($userId){
             $query->where('supervisor_id', $userId)->whereDoesntHave('reparacion');
         })->get();
         if ($rol == 3){

@@ -25,7 +25,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Planta</label>
-                    <select wire:model="planta" class="form-control">
+                    <select wire:model="planta" id="correo" class="form-control">
                         <option value="">--Seleccione una planta--</option>
                         @foreach ($plantas as $planta)
                             <option value="{{ $planta->id }}">Planta {{ $planta->id }}</option>
