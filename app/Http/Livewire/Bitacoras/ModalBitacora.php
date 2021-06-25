@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Bitacoras;
 
 use App\Models\Bitacora;
+use App\Models\Planta;
 use App\Models\User;
 use Livewire\Component;
 
@@ -13,22 +14,26 @@ class ModalBitacora extends Component
     public $nombre;
     public $detalles;
     public $mecanico;
+    public $planta;
 
     public function crearBitacora() {
         $this->validate( [
             'nombre' => 'required|min:3',
             'detalles' => 'required',
-            'mecanico' => 'required|numeric'
+            'mecanico' => 'required|numeric',
+            'planta' => 'required|numeric'
         ], null,  [
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico' => $this->mecanico,
+            'planta' => $this->planta
         ]);
 
         Bitacora::create([
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
-            'mecanico_id' => $this->mecanico
+            'mecanico_id' => $this->mecanico,
+            'planta_id' => $this->planta
         ]);
 
         return redirect()->route('bitacoras.index');
@@ -39,17 +44,20 @@ class ModalBitacora extends Component
         $this->validate( [
             'nombre' => 'required|min:3',
             'detalles' => 'required',
-            'mecanico' => 'required|numeric'
+            'mecanico' => 'required|numeric',
+            'planta' => 'required|numeric'
         ], null,  [
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
             'mecanico' => $this->mecanico,
+            'planta' => $this->planta
         ]);
 
         $this->bitacora->update([
             'nombre' => $this->nombre,
             'detalles' => $this->detalles,
-            'mecanico_id' => $this->mecanico
+            'mecanico_id' => $this->mecanico,
+            'planta_id' => $this->planta
         ]);
 
         return redirect()->route('bitacoras.index');
@@ -60,6 +68,7 @@ class ModalBitacora extends Component
         $this->nombre = $this->bitacora->nombre;
         $this->detalles = $this->bitacora->detalles;
         $this->mecanico = $this->bitacora->mecanico_id;
+        $this->planta = $this->bitacora->planta_id;
         $this->emit('mostrarModalCrearBitacora');
     }
 
@@ -75,13 +84,16 @@ class ModalBitacora extends Component
         $this->nombre = null;
         $this->detalles = null;
         $this->mecanico = null;
+        $this->planta = null;
     }
 
     public function render()
     {
         $mecanicos = User::where('rol_id', 3)->get();
+        $plantas = Planta::all();
         return view('livewire.bitacoras.modal-bitacora', [
-            'mecanicos' => $mecanicos
+            'mecanicos' => $mecanicos,
+            'plantas' => $plantas
         ]);
     }
 }

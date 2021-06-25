@@ -18,7 +18,10 @@ class MostrarBitacoras extends Component
 
     public function render()
     {
-        $bitacoras = Bitacora::with('mecanico')->get();
+        $usuario = \Auth::user();
+        $bitacoras = Bitacora::when($usuario->rol_id !== 1, function ($query) use($usuario){
+            $query->where('planta_id', $usuario->planta_id);
+        })->get();
         return view('livewire.bitacoras.mostrar-bitacoras', [
             'bitacoras' => $bitacoras
         ]);
