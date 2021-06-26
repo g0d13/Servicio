@@ -3,9 +3,10 @@
         <div
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
-                <div class="user-avatar lg-avatar mr-4">
-                    <img src="/assets/img/team/profile-picture-3.jpg"
-                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                <div class="avatar avatar-xl text-white mr-4">
+                    <div style="height: 40px;width: 40px; background-color: darkslategray;text-align: center;color: white;font-weight: bold;text-transform: uppercase;border-radius: 50%;padding:8px">
+                        <span>{{substr(Auth::user()->nombre ?? '', 0, 1)}}</span>
+                    </div>
                 </div>
                 <div class="d-block">
                     <h2 class="h6">Hola, {{Auth::user()->nombre}}</h2>

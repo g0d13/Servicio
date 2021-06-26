@@ -10,7 +10,7 @@
                     <a class="nav-link pt-1 px-0" href="#" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <div class="media d-flex align-items-center">
-                            <div class="avatar avatar-xl text-white">
+                            <div class="avatar avatar-xl text-white d-sm-none d-lg-block">
                                 <div style="height: 40px;width: 40px; background-color: darkslategray;text-align: center;color: white;font-weight: bold;text-transform: uppercase;border-radius: 50%;padding:8px">
                                     <span>{{substr(Auth::user()->nombre ?? '', 0, 1)}}</span>
                                 </div>
