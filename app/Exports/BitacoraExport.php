@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Bitacora;
+use App\Models\Planta;
 use App\Models\Solicitud;
 use App\Models\User;
 use Carbon\Carbon;
@@ -16,6 +17,7 @@ use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use Illuminate\Support\Facades\DB;
 
 class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
 {
@@ -23,17 +25,38 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
      * @return \Illuminate\Support\Collection
      */
     private $index = 0;
+    private $tipo = null;
+    private $planta = null;
+    private $fecha = null;
+
+    public function __construct($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
     public function collection()
     {
-        // $data = Bitacora::with('solicitudes')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();
-        $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();;
-        // $data = Bitacora::whereDate('created_at', Carbon::today());
+        $solicitudes = [];
+
+        if ($this->tipo === 'D') {
+            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("date(solicitudes.created_at)"), '=', DB::raw("curdate()"))->get();
+            $this->fecha = Carbon::now()->format('d-m-Y');
+       } elseif ($this->tipo === 'S') {
+            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("yearweek(solicitudes.created_at)"), '=', DB::raw("yearweek(now())"))->get();
+            $this->fecha = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->format('d-m-y'). ' al '.Carbon::now()->subDays(Carbon::now()->dayOfWeek)->addDays(6)->format('d-m-y');
+       } else if ($this->tipo === 'M') {
+            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("month(solicitudes.created_at)"), '=', DB::raw("month(now())"))->get();
+            $this->fecha = Carbon::now()->monthName;
+       }
+
         $this->index = sizeof($solicitudes);
+
 
         $aux = [];
 
         foreach ($solicitudes as $solicitud) {
             $mecanico = User::find($solicitud->bitacora->mecanico_id);
+            $this->planta = Planta::find($solicitud->bitacora->planta_id)->nombre;
             array_push($aux, [
                 'Prioridad' => $solicitud->prioridad ?? '',
                 'Operación' => $solicitud->operacion ?? '',
@@ -87,7 +110,9 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         $sheet->mergeCells('F4:H4');
         // Agregar campos
         $sheet->setCellValue('B2', 'Planta:');
+        $sheet->setCellValue('C2', $this->planta);
         $sheet->setCellValue('G2', 'Fecha:');
+        $sheet->setCellValue('H2', $this->fecha);
         $sheet->setCellValue('F4', 'HORAS');
         $sheet->getRowDimension(4)->setRowHeight(30);
         $sheet->getRowDimension(5)->setRowHeight(30);

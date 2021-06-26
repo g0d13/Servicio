@@ -14,6 +14,7 @@ use App\Http\Livewire\Usuarios\MostrarUsuarios;
 use App\Models\Bitacora;
 use App\Models\Solicitud;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
@@ -70,11 +71,15 @@ Route::get('/test', function () {
         })->get();
 });
 
-Route::get('/descargar', function () {
-
-    return Excel::download(new BitacoraExport(), 'users.xls');
-
-    // return Solicitud::with('bitacora')->with('reparacion')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();
-
-});
+Route::get('/reporte/{tipo}', function ($tipo) {
+    switch ($tipo) {
+        case 'diario':
+            return Excel::download(new BitacoraExport('D'), 'reporte '.Carbon::now()->format('d-m-Y').'.xls');
+        case 'semanal':
+            $fecha = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->format('d-m-y'). ' '.Carbon::now()->subDays(Carbon::now()->dayOfWeek)->addDays(6)->format('d-m-y');
+            return Excel::download(new BitacoraExport('S'), 'reporte '.$fecha.'.xls');
+        case 'mensual':
+            return Excel::download(new BitacoraExport('M'), 'reporte'.Carbon::now()->monthName.'.xls');
+    }
+})->name('reporte');
 require __DIR__ . '/auth.php';
