@@ -189,16 +189,16 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             'C2:E2' => [
                 'borders' => $borderButtom,
             ],
-            'A6:A' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'B6:B' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'C6:C' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'D6:D' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'E6:E' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'F6:F' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'G6:G' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'H6:H' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'I6:I' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
-            'J6:J' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'A6:A' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'B6:B' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'C6:C' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'D6:D' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'E6:E' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'F6:F' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'G6:G' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'H6:H' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'I6:I' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
+            'J6:J' . ($this->index + 6 - 1) => [ 'borders' => $allBorders],
         ];
     }
 }
