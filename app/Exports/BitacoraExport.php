@@ -28,10 +28,12 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
     private $tipo = null;
     private $planta = null;
     private $fecha = null;
+    private $plantaId = null;
 
-    public function __construct($tipo)
+    public function __construct($tipo, $plantaId)
     {
         $this->tipo = $tipo;
+        $this->plantaId = $plantaId;
     }
 
     public function collection()
@@ -49,26 +51,30 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             $this->fecha = Carbon::now()->monthName;
        }
 
-        $this->index = sizeof($solicitudes);
+        // $this->index = sizeof($solicitudes);
 
 
         $aux = [];
 
         foreach ($solicitudes as $solicitud) {
-            $mecanico = User::find($solicitud->bitacora->mecanico_id);
-            $this->planta = Planta::find($solicitud->bitacora->planta_id)->nombre;
-            array_push($aux, [
-                'Prioridad' => $solicitud->prioridad ?? '',
-                'Operación' => $solicitud->operacion ?? '',
-                'No. Maquina' => $solicitud->maquina_id ?? '',
-                'Módulo' => $solicitud->modulo ?? '',
-                'Código del problema' => $solicitud->problema_id ?? '',
-                'LLamó al mecanico' => $solicitud->created_at ?? '',
-                'Llegó el mecánico' => $solicitud->llegada_mecanico ?? '',
-                'Quedó lista' => $solicitud->reparacion->quedo_lista ?? '',
-                'Tipo de reparación' => $solicitud->reparacion->tipo_reparacion ?? '',
-                'Nombre del mecanico' => $mecanico->nombre . ' ' . $mecanico->apellidos ?? ''
-            ]);
+            if ($solicitud->bitacora->planta_id == $this->plantaId) {
+
+                $mecanico = User::find($solicitud->bitacora->mecanico_id);
+                $this->planta = Planta::find($solicitud->bitacora->planta_id)->nombre;
+                array_push($aux, [
+                    'Prioridad' => $solicitud->prioridad ?? '',
+                    'Operación' => $solicitud->operacion ?? '',
+                    'No. Maquina' => $solicitud->maquina_id ?? '',
+                    'Módulo' => $solicitud->modulo ?? '',
+                    'Código del problema' => $solicitud->problema_id ?? '',
+                    'LLamó al mecanico' => $solicitud->created_at ?? '',
+                    'Llegó el mecánico' => $solicitud->llegada_mecanico ?? '',
+                    'Quedó lista' => $solicitud->reparacion->quedo_lista ?? '',
+                    'Tipo de reparación' => $solicitud->reparacion->tipo_reparacion ?? '',
+                    'Nombre del mecanico' => $mecanico->nombre . ' ' . $mecanico->apellidos ?? ''
+                ]);
+                $this->index ++;
+            }
         }
 
         return collect($aux);

@@ -62,11 +62,19 @@
 
                         </div>
                         <div class="col-auto">
-                            <a href="{{ route('reporte', ['tipo' => 'diario']) }}" class="btn btn-success"><i class="fas fa-download"></i></a>
+                            {{-- <a href="{{ route('reporte', ['tipo' => 'diario']) }}" class="btn btn-success"><i class="fas fa-download"></i></a> --}}
                         </div>
                     </div>
                     <p class="mt-3 mb-0 text-muted text-sm">
                         <span class="text-wrap">{{ \Carbon\Carbon::now()->day }} de {{ \Carbon\Carbon::now()->monthName }} de {{ \Carbon\Carbon::now()->year }}</span>
+                        <select name="" id="" class="form-control mt-3" onchange="window.location = this.value;">
+                            <option value="" >Seleccione la planta</option>
+                            @foreach ($plantas as $planta)
+                                <option value="{{ route('reporte', ['tipo' => 'diario', 'plantaId' => $planta->id]) }}">
+                                    {{ $planta->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
                     </p>
                 </div>
             </div>
@@ -80,7 +88,7 @@
 
                         </div>
                         <div class="col-auto">
-                            <a href="{{ route('reporte', ['tipo' => 'semanal']) }}" class="btn btn-success"><i class="fas fa-download"></i></a>
+                            {{-- <a href="{{ route('reporte', ['tipo' => 'semanal']) }}" class="btn btn-success"><i class="fas fa-download"></i></a> --}}
                         </div>
                     </div>
                     <p class="mt-3 mb-0 text-muted text-sm">
@@ -89,6 +97,14 @@
                             $finSemana = \Carbon\Carbon::now()->subDays(\Carbon\Carbon::now()->dayOfWeek)->addDays(6);
                         @endphp
                         <span class="text-nowrap">{{ $inicioSemana->day.' de '.$inicioSemana->monthName.' de '.$inicioSemana->year }} al {{ $finSemana->day.' de '.$finSemana->monthName.' de '.$finSemana->year }}</span>
+                        <select name="" id="" class="form-control mt-3" onchange="window.location = this.value;">
+                            <option value="" >Seleccione la planta</option>
+                            @foreach ($plantas as $planta)
+                                <option value="{{ route('reporte', ['tipo' => 'semanal', 'plantaId' => $planta->id]) }}">
+                                    {{ $planta->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
                     </p>
                 </div>
             </div>
@@ -102,11 +118,19 @@
 
                         </div>
                         <div class="col-auto">
-                            <a href="{{ route('reporte', ['tipo' => 'mensual']) }}" class="btn btn-success"><i class="fas fa-download"></i></a>
+                            {{-- <a href="{{ route('reporte', ['tipo' => 'mensual']) }}" class="btn btn-success"><i class="fas fa-download"></i></a> --}}
                         </div>
                     </div>
                     <p class="mt-3 mb-0 text-muted text-sm">
-                        <span class="text-nowrap">{{ \Carbon\Carbon::now()->monthName }}</span>
+                        <span class="text-nowrap text-capitalize">{{ \Carbon\Carbon::now()->monthName }}</span>
+                        <select name="" id="" class="form-control mt-3" onchange="window.location = this.value;">
+                            <option value="" >Seleccione la planta</option>
+                            @foreach ($plantas as $planta)
+                                <option value="{{ route('reporte', ['tipo' => 'mensual', 'plantaId' => $planta->id]) }}">
+                                    {{ $planta->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
                     </p>
                 </div>
             </div>

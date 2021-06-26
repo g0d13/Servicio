@@ -71,15 +71,17 @@ Route::get('/test', function () {
         })->get();
 });
 
-Route::get('/reporte/{tipo}', function ($tipo) {
+Route::get('/reporte/{tipo}/{plantaId}', function ($tipo, $plantaId) {
     switch ($tipo) {
         case 'diario':
-            return Excel::download(new BitacoraExport('D'), 'reporte '.Carbon::now()->format('d-m-Y').'.xls');
+            return Excel::download(new BitacoraExport('D', $plantaId), 'reporte '.Carbon::now()->format('d-m-Y').'.xls');
         case 'semanal':
             $fecha = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->format('d-m-y'). ' '.Carbon::now()->subDays(Carbon::now()->dayOfWeek)->addDays(6)->format('d-m-y');
-            return Excel::download(new BitacoraExport('S'), 'reporte '.$fecha.'.xls');
+            return Excel::download(new BitacoraExport('S', $plantaId), 'reporte '.$fecha.'.xls');
         case 'mensual':
-            return Excel::download(new BitacoraExport('M'), 'reporte'.Carbon::now()->monthName.'.xls');
+            return Excel::download(new BitacoraExport('M', $plantaId), 'reporte'.Carbon::now()->monthName.'.xls');
     }
 })->name('reporte');
+
+
 require __DIR__ . '/auth.php';
