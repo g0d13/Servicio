@@ -28,7 +28,19 @@
                     <td>Planta {{ $bitacora->planta_id }}</td>
                     <td>{{ $bitacora->mecanico->nombre ?? '' }} {{ $bitacora->mecanico->apellidos ?? '' }}</td>
                     @if(auth()->user()->rol_id == 1)
-                        <td><span class="badge bg-success">ok</span></td>
+                        @if (($bitacora->haySolicitudes == 0 || $bitacora->haySolicitudes == $bitacora->haySolicitudesAtendidas))
+                            <td><span class="badge bg-success">ok</span></td>
+                        @endif
+                        @if (($bitacora->haySolicitudes > $bitacora->haySolicitudesAtendidas && !$bitacora->llegoMecanico && $bitacora->haySolicitudesAtendidas != $bitacora->haySolicitudes) || (!$bitacora->llegoMecanico && $bitacora->haySolicitudes > 0 && $bitacora->haySolicitudesAtendidas != $bitacora->haySolicitudes))
+                            <td><span class="badge bg-danger">{{ abs($bitacora->haySolicitudesAtendidas - $bitacora->haySolicitudes)}} sin atender</span></td>
+                        @endif
+                        @if ($bitacora->llegoMecanico && $bitacora->haySolicitudesAtendidas != $bitacora->haySolicitudes)
+                            <td><span class="badge bg-warning">Llegó el mecánico</span></td>
+                        @endif
+                        {{-- @if ($bitacora->solicitudes && $bitacora->solicitudes->llegada_menico)
+                            <td><span class="badge bg-warning">Mecánico in llegada</span></td>
+                        @endif --}}
+
                     @endif
                     <td>
                         @if(Auth::user()->rol->id == 1)

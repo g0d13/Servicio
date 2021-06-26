@@ -17,35 +17,37 @@ use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithEvents, WithColumnFormatting
+class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
 {
     /**
      * @return \Illuminate\Support\Collection
      */
+    private $index = 0;
     public function collection()
     {
-        $data = Bitacora::with('solicitudes')->get();
+        // $data = Bitacora::with('solicitudes')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();
+        $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();;
+        // $data = Bitacora::whereDate('created_at', Carbon::today());
+        $this->index = sizeof($solicitudes);
 
         $aux = [];
 
-        foreach ($data as $bitacora) {
-            foreach ($bitacora->solicitudes as $solicitud) {
-                $reparacion = Solicitud::with('reparacion')->where('id', $solicitud->id)->get()[0]->reparacion;
-                $mecanico = User::find($reparacion->mecanico_id);
-                array_push($aux, [
-                    'Prioridad' => $solicitud->prioridad,
-                    'Operación' => $solicitud->operacion,
-                    'No. Maquina' => $solicitud->maquina_id,
-                    'Módulo' => $solicitud->modulo,
-                    'Código del problema' => $solicitud->problema_id,
-                    'LLamó al mecanico' => $solicitud->created_at,
-                    'Llegó el mecánico' => $solicitud->llegada_mecanico,
-                    'Quedó lista' => Carbon::parse($reparacion->quedo_lista)->hour() . ':' . Carbon::parse($reparacion->quedo_lista)->minute,
-                    'Tipo de reparación' => $reparacion->tipo_reparacion,
-                    'Nombre del mecanico' => $mecanico->nombre . ' ' . $mecanico->apellidos
-                ]);
-            }
+        foreach ($solicitudes as $solicitud) {
+            $mecanico = User::find($solicitud->bitacora->mecanico_id);
+            array_push($aux, [
+                'Prioridad' => $solicitud->prioridad ?? '',
+                'Operación' => $solicitud->operacion ?? '',
+                'No. Maquina' => $solicitud->maquina_id ?? '',
+                'Módulo' => $solicitud->modulo ?? '',
+                'Código del problema' => $solicitud->problema_id ?? '',
+                'LLamó al mecanico' => $solicitud->created_at ?? '',
+                'Llegó el mecánico' => $solicitud->llegada_mecanico ?? '',
+                'Quedó lista' => $solicitud->reparacion->quedo_lista ?? '',
+                'Tipo de reparación' => $solicitud->reparacion->tipo_reparacion ?? '',
+                'Nombre del mecanico' => $mecanico->nombre . ' ' . $mecanico->apellidos ?? ''
+            ]);
         }
+
         return collect($aux);
     }
 
@@ -87,6 +89,9 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         $sheet->setCellValue('B2', 'Planta:');
         $sheet->setCellValue('G2', 'Fecha:');
         $sheet->setCellValue('F4', 'HORAS');
+        $sheet->getRowDimension(4)->setRowHeight(30);
+        $sheet->getRowDimension(5)->setRowHeight(30);
+
 
         // alineación de texto
         $textCenter = array(
@@ -101,66 +106,74 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             )
         );
 
+        $textVerticalCenter = array(
+            'alignment' => array(
+                'vertical' => Alignment::VERTICAL_CENTER,
+            )
+        );
+
+        $allBorders = [
+            'allBorders' => [
+                'borderStyle' => Border::BORDER_THIN,
+            ],
+        ];
+
+        $borderButtom = [
+            'bottom' => [
+                'borderStyle' => Border::BORDER_THIN,
+            ]
+        ];
+
         $sheet->getStyle("A1:C1")->applyFromArray($textCenter);
         $sheet->getStyle("F4:H4")->applyFromArray($textCenter);
         $sheet->getStyle("B2")->applyFromArray($textRight);
         $sheet->getStyle("G2")->applyFromArray($textRight);
+        $sheet->getStyle("A4:J4")->applyFromArray($textVerticalCenter);
+        $sheet->getStyle("A5:J5")->applyFromArray($textVerticalCenter);
 
+        $textColumn = [
+            'name'      =>  'Calibri',
+            'size'      =>  12,
+            'bold'      =>  true,
+        ];
 
         // estilos
         return [
             1    => ['font' => ['bold' => true, 'size' => 14]],
             2    => ['font' => ['bold' => true, 'size' => 12]],
+            'A:J' => [
+                'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER],
+                'size' => [
+                    'height' => 50
+                ]
+            ],
             'A1'    => ['font' => ['bold' => true]],
             4    => ['font' => ['bold' => true, 'size' => 12]],
             'A5:J5'    => [
-                'fill' => [
-                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                    'color' => ['rgb' => '008686']
-                ],
-                'font' => [
-                    'name'      =>  'Calibri',
-                    'size'      =>  12,
-                    'bold'      =>  true,
-                    'color' => ['rgb' => 'FFFFFF'],
-                ],
+                'font' => $textColumn,
+                'borders' => $allBorders,
+
             ],
             'F4:H4' => [
-                'fill' => [
-                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                    'color' => ['rgb' => '008686']
-                ],
-                'font' => [
-                    'name'      =>  'Calibri',
-                    'size'      =>  12,
-                    'bold'      =>  true,
-                    'color' => ['rgb' => 'FFFFFF'],
-                ],
+                'borders' => $allBorders,
+                'font' => $textColumn,
             ],
             'H2:J2' => [
-                'borders' => [
-                    'bottom' => [
-                        'borderStyle' => Border::BORDER_THIN,
-                    ]
-                ],
+                'borders' => $borderButtom,
             ],
             'C2:E2' => [
-                'borders' => [
-                    'bottom' => [
-                        'borderStyle' => Border::BORDER_THIN,
-                    ]
-                ],
-            ]
-
-        ];
-    }
-
-    public function registerEvents(): array
-    {
-        return [
-            BeforeSheet::class => function ($event) {
-                $event->sheet->setOrientation(PageSetup::ORIENTATION_LANDSCAPE);
-            },
+                'borders' => $borderButtom,
+            ],
+            'A6:A' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'B6:B' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'C6:C' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'D6:D' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'E6:E' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'F6:F' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'G6:G' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'H6:H' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'I6:I' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
+            'J6:J' . $this->index + 6 - 1 => [ 'borders' => $allBorders],
         ];
     }
 }

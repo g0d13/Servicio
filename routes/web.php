@@ -72,7 +72,9 @@ Route::get('/test', function () {
 
 Route::get('/descargar', function () {
 
-    return Excel::download(new BitacoraExport, 'users.xls');
+    return Excel::download(new BitacoraExport(), 'users.xls');
+
+    // return Solicitud::with('bitacora')->with('reparacion')->where(\DB::raw("date(solicitudes.created_at)"), '=', \DB::raw("curdate()"))->get();
 
 });
 require __DIR__ . '/auth.php';
