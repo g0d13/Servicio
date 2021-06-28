@@ -83,5 +83,4 @@ Route::get('/reporte/{tipo}/{plantaId}', function ($tipo, $plantaId) {
     }
 })->name('reporte');
 
-
 require __DIR__ . '/auth.php';

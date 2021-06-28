@@ -9,3 +9,12 @@
             }
         }
     }
+
+    if (!function_exists('enviarDatosUsb')) {
+        function enviarDatosUsb( $puerto, $datos) {
+            $port =fopen($puerto, "w");// com7 Seria el Puerto USB
+            fwrite($port, $datos);
+            sleep(1);
+            fclose($port);
+        }
+    }
