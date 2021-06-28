@@ -26,7 +26,7 @@
                     <td>{{ $usuario->apellidos }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->rol->nombre }}</td>
-                    <td>Planta {{ $usuario->planta->id }}</td>
+                    <td>Planta {{ $usuario->planta->id ?? ''}}</td>
                     <td>
                         <button class="btn" wire:click="$emit('mostrarModalActualizarUsuario', {{ $usuario->id }})">
                             <i class="fas fa-edit"></i>

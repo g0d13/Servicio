@@ -57,7 +57,7 @@
                             <select wire:model="planta" class="form-control">
                                 <option value="">--Seleccione una planta--</option>
                                 @foreach ($plantas as $planta)
-                                    <option value="{{ $planta->id }}">{{ $planta->nombre }}</option>
+                                    <option value="{{ $planta->id }}">Planta {{ $planta->id }}</option>
                                 @endforeach
                             </select>
                             @error('planta')
