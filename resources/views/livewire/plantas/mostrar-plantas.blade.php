@@ -19,7 +19,7 @@
             @foreach ($plantas as $planta)
                 <tr>
                     <td>{{ $planta->id }}</td>
-                    <td>{{ $planta->nombre }}</td>
+                    <td>Sin mecanico encargado</td>
                     <td>{{ \Carbon\Carbon::parse($planta->created_at)->day }} de {{ \Carbon\Carbon::parse($planta->created_at)->monthName }} de {{ \Carbon\Carbon::parse($planta->created_at)->year }}</td>
                     <td>
                         <button class="btn" wire:click.prevent="$emit('mostrarModalActualizarPlanta', {{ $planta->id }})">
