@@ -11,8 +11,7 @@
                     <a class="nav-link pt-1 px-0" href="#" role="button" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
                         <div class="media d-flex align-items-center">
-
-                            <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
+                            <div class="media-body ml-2 text-dark align-items-center d-none d-xl-block">
                                 <span class="mb-0 font-small font-weight-bold">{{ auth()->user()->nombre }}</span>
                             </div>
                         </div>
@@ -27,5 +26,8 @@
                 </li>
             </ul>
         </div>
+        <button id="iconNavbarSidenav" class="d-block d-xl-none btn btn-outline-primary">
+            <span class="fas fa-bars text-primary" />
+        </button>
     </div>
 </nav>

@@ -48,7 +48,7 @@
 </script>
 <!-- Github buttons -->
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+<script src="js/soft-ui-dashboard.js?v=1.0.3"></script>
 </body>
 
 </html>
