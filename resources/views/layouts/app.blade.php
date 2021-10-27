@@ -28,7 +28,9 @@
     <!-- Navbar -->
     <x-topnav />
     <!-- End Navbar -->
-    {{$slot}}
+    <div style="padding: 2em">
+        {{$slot}}
+    </div>
 </main>
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -39,7 +41,7 @@
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {
-            damping: '0.5'
+            damping: '0.6'
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
