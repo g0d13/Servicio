@@ -26,7 +26,7 @@
                 </li>
             </ul>
         </div>
-        <button id="iconNavbarSidenav" class="d-block d-xl-none btn btn-outline-primary">
+        <button id="iconNavbarSidenav" class="d-block d-xl-none btn btn-outline-primary btn-sm">
             <span class="fas fa-bars text-primary" />
         </button>
     </div>

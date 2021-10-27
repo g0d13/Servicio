@@ -10,7 +10,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Volt CSS -->
-    <link type="text/css" href="/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet">
+    <link type="text/css" href="/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet">
     <!-- Scripts -->
     <script src=/js/sweetalert2@11.js></script>
     <script src="/js/all.min.js"></script>
@@ -25,6 +25,29 @@
 <x-sidebar />
 
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+    <style>
+        .outline-none {
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: var(--bs-blue);
+        }
+        .btn-primary:hover {
+            background-color: var(--bs-blue);
+        }
+        .navbar-link > .actives > .icon  {
+            background-color: var(--bs-secondary) !important;
+        }
+        .actives {
+            font-weight: 600;
+            box-shadow: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            background: white;
+        }
+        .actives > div:nth-child(1) {
+            background-color: var(--bs-blue) !important;
+        }
+    </style>
     <!-- Navbar -->
     <x-topnav />
     <!-- End Navbar -->

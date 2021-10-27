@@ -3,7 +3,7 @@
         function active($path, $current_path)
         {
             if ($path == $current_path) {
-                return 'active text-white';
+                return 'actives text-white';
             } else {
                 return '';
             }
