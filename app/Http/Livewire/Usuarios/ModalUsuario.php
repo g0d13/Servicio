@@ -116,9 +116,9 @@ class ModalUsuario extends Component
         //SELECT * FROM plantas LEFT JOIN users u on plantas.id = u.planta_id AND u.rol_id = 2 WHERE u.nombre IS NULL
         $roles = Rol::all()->skip(1);
         $plantas = Planta::when($this->rol == 2, function ($query) {
-            $query->leftJoin('users', function ($join){
-                $join->on('users.planta_id', '=', 'plantas.id')->where('users.rol_id', 2);
-            })->whereNull('users.nombre')->select('plantas.*');
+            $query->leftJoin('usuarios', function ($join){
+                $join->on('usuarios.planta_id', '=', 'plantas.id')->where('usuarios.rol_id', 2);
+            })->whereNull('usuarios.nombre')->select('plantas.*');
         })->get();
         return view('livewire.usuarios.modal-usuario', [
             'roles' => $roles,

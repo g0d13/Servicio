@@ -18,14 +18,14 @@
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Detalles</label>
-                    <input type="text" class="form-control" wire:model="detalles">
+                    <input id="nombre" type="text" class="form-control" wire:model="detalles">
                     @error('detalles')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Planta</label>
-                    <select wire:model="planta" id="correo" class="form-control">
+                    <select wire:model="planta" id="correo" class="form-control" wire:model="plantaSeleccionada">
                         <option value="">--Seleccione una planta--</option>
                         @foreach ($plantas as $planta)
                             <option value="{{ $planta->id }}">Planta {{ $planta->id }}</option>
@@ -50,7 +50,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 @if ($bitacora)
                     <button type="button" class="btn btn-primary" wire:click.prevent="actualizarBitacora">Actualizar</button>
                 @else

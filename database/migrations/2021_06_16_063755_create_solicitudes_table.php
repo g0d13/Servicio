@@ -22,7 +22,7 @@ class CreateSolicitudesTable extends Migration
             $table->foreignId('problema_id')->constrained('problemas');
             $table->foreignId('bitacora_id')->constrained('bitacoras');
             $table->string('maquina_id')->constrained('maquinas');
-            $table->foreign('supervisor_id')->references('id')->on('users');
+            $table->foreign('supervisor_id')->references('id')->on('usuarios');
             $table->dateTime('llegada_mecanico')->nullable();
             $table->timestamps();
         });
