@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <form class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ $planta ? 'Actualizar planta': 'Crear planta' }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ $planta ? 'Actualizar linea': 'Crear linea' }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

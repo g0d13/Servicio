@@ -115,7 +115,7 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         $sheet->mergeCells('H2:J2');
         $sheet->mergeCells('F4:H4');
         // Agregar campos
-        $sheet->setCellValue('B2', 'Planta:');
+        $sheet->setCellValue('B2', 'Línea de producción:');
         $sheet->setCellValue('C2', $this->planta);
         $sheet->setCellValue('G2', 'Fecha:');
         $sheet->setCellValue('H2', $this->fecha);

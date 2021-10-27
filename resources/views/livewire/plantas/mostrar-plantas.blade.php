@@ -1,9 +1,9 @@
 <x-slot name="header">
-    Plantas
+    Lineas de producción
 </x-slot>
 <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
     <div class="d-flex align-content-between align-items-center justify-content-between">
-        <p class="text-muted mb-3 fs-4 fw-bold">Plantas</p>
+        <p class="text-muted mb-3 fs-4 fw-bold">Lineas de producción</p>
         <button wire:click="$emit('mostrarModalCrearPlanta')" class="btn btn-sm btn-primary">Agregar</button>
     </div>
     <div class="table-responsive">

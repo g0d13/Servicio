@@ -1,22 +1,5 @@
-<!--
-
-=========================================================
-* Volt - Bootstrap 5 Admin Dashboard
-=========================================================
-
-* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
-* Copyright 2020 Themesberg (https://www.themesberg.com)
-
-* Designed and coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
-
--->
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -27,50 +10,43 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Volt CSS -->
-    <link type="text/css" href="/css/volt.css" rel="stylesheet">
+    <link type="text/css" href="/css/soft-ui-dashboard.min.css?v=1.0.3" rel="stylesheet">
     <!-- Scripts -->
-    <script src="/js/sweetalert2@11"></script>
+    <script src=/js/sweetalert2@11.js></script>
     <script src="/js/all.min.js"></script>
+    <title>
+        CONFETEX
+    </title>
 
     @livewireScripts
 </head>
 
-<body>
-<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
-    <a class="navbar-brand mr-lg-5" >
-    </a>
-    <div class="d-flex align-items-center">
-        <button class="navbar-toggler d-md-none collapsed" type="button" data-toggle="collapse"
-                data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+<body class="g-sidenav-show  bg-gray-100">
+<x-sidebar />
 
-<div class="container-fluid bg-soft">
-    <div class="row">
-        <div class="col-12">
-            <x-sidebar/>
-            <main class="content" style="height: 100vh">
-                <x-topnav>
-                    {{$header ?? ''}}
-                </x-topnav>
-                <div class="mt-5">
-                    {{$slot}}
-                </div>
-            </main>
-        </div>
-    </div>
-</div>
-
-<!-- Core -->
-<script src="/js/popper.min.js"></script>
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+    <!-- Navbar -->
+    <x-topnav />
+    <!-- End Navbar -->
+    {{$slot}}
+</main>
+<script src="/js/core/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<!-- Volt JS -->
-<script src="/js/volt.js"></script>
-
-
+<script src="/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="/js/plugins/chartjs.min.js"></script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+</script>
+<!-- Github buttons -->
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
 
 </html>

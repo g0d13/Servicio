@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Solicitudes</h5>
-                            <span class="h2 font-weight-bold mb-0">1</span>
+                            <span class="h2 font-weight-bold mb-0">{{ \App\Models\Solicitud::whereDate('created_at', \Carbon\Carbon::today())->count() }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Reparaciones</h5>
-                            <span class="h2 font-weight-bold mb-0">2</span>
+                            <span class="h2 font-weight-bold mb-0">{{ \App\Models\Reparacion::whereDate('created_at', \Carbon\Carbon::today())->count() }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-warning text-white rounded-circle shadow">

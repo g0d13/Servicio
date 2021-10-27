@@ -24,9 +24,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="correo" class="form-label">Planta</label>
+                    <label for="correo" class="form-label">Línea de producción</label>
                     <select wire:model="planta" id="correo" class="form-control" wire:model="plantaSeleccionada">
-                        <option value="">--Seleccione una planta--</option>
+                        <option value="">--Seleccione una línea de producción--</option>
                         @foreach ($plantas as $planta)
                             <option value="{{ $planta->id }}">Planta {{ $planta->id }}</option>
                         @endforeach
