@@ -11,14 +11,14 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="prioridad" class="form-label">Prioridad</label>
-                    <input type="number" min="0" max="10" name="prioridad" class="form-control" wire:model="prioridad">
+                    <input id="prioridad" type="number" min="0" max="10" name="prioridad" class="form-control" wire:model="prioridad">
                     @error('prioridad')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="problema" class="form-label">Problema</label>
-                    <select wire:model="problema" name="problema" class="form-control">
+                    <select id="problema" wire:model="problema" name="problema" class="form-control">
                         <option value="">--Selecciona un problema--</option>
                         @foreach ($problemas as $problema)
                             <option value="{{ $problema->id }}">{{ $problema->nombre }}</option>
@@ -29,15 +29,15 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="problema" class="form-label">Operacion</label>
-                    <input type="text" class="form-control" wire:model="operacion">
+                    <label for="operacion" class="form-label">Operacion</label>
+                    <input id="operacion" type="text" class="form-control" wire:model="operacion">
                     @error('operacion')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Módulo</label>
-                    <input type="text" class="form-control" wire:model="modulo">
+                    <label for="modulo" class="form-label">Módulo</label>
+                    <input id="modulo" type="text" class="form-control" wire:model="modulo">
                     @error('modulo')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror
