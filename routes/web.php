@@ -45,6 +45,9 @@ Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'ind
 //     return view('bitacoras');
 // })->name('bitacoras');
 
+Route::get('/reportes', \App\Http\Livewire\Reportes\Index::class)->name('reportes.index')->middleware('auth')->middleware('role:1');
+
+
 // ruta de bitacoras
 Route::get('/bitacoras', MostrarBitacoras::class)->name('bitacoras.index')->middleware('auth')->middleware('role:1;2');
 

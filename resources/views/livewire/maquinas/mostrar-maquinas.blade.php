@@ -1,7 +1,7 @@
 <x-slot name="header">
     Maquinas
 </x-slot>
-<div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
+<div class="card p-3 rounded-3 overlay-scrollbar p-4" style="background-color: white!important">
     <div class="d-flex align-content-between align-items-center justify-content-between">
         <p class="text-muted mb-3 fs-4 fw-bold">Maquinas</p>
         <button wire:click="$emit('mostrarModalCrearMaquina')" class="btn btn-sm btn-primary">Agregar</button>
@@ -24,13 +24,16 @@
                     <td>{{ $maquina->marca }}</td>
                     <td>{{ $maquina->operador }}</td>
                     <td>
-                        <button type="button" class="btn" wire:click.prevent="$emit('mostrarModalActualizarMaquina', {{ $maquina }})"><i class="fa fa-edit" aria-hidden="true"></i></button>
-                        <button type="button" class="btn" wire:click.prevent="$emit('alertaEliminarMaquina', {{ $maquina }})"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button type="button" class="btn outline-none" wire:click.prevent="$emit('mostrarModalActualizarMaquina', {{ $maquina }})"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                        <button type="button" class="btn outline-none" wire:click.prevent="$emit('alertaEliminarMaquina', {{ $maquina }})"><i class="fa fa-trash" aria-hidden="true"></i></button>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center">
+            {{$maquinas->links()}}
+        </div>
     </div>
 </div>
 <livewire:maquinas.modal-maquinas/>

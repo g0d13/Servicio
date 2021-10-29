@@ -2,7 +2,7 @@
     <x-slot name="header">
         Solicitudes
     </x-slot>
-    <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
+    <div class="card p-3 rounded-3 overlay-scrollbar p-4" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
             <p class="text-muted mb-3 fs-4 fw-bold">Solicitudes</p>
         </div>
@@ -25,17 +25,17 @@
                         <td>{{ $solicitud->prioridad }}</td>
                         <td>{{ $solicitud->problema->nombre }}</td>
                         <td>{{ $solicitud->modulo }}</td>
-                        <td>{{ $solicitud->supervisor->nombre }} {{ $solicitud->supervisor->apellidos }}</td>
+                        <td>{{ $solicitud->supervisor()->withTrashed()->first()->nombre }} {{ $solicitud->supervisor()->withTrashed()->first()->apellidos }}</td>
                         <td>Máquina {{ $solicitud->maquina->id }}</td>
-                        <td>{{ $solicitud->bitacora->nombre }}</td>
+                        <td>{{ $solicitud->bitacora()->withTrashed()->first()->nombre }}</td>
                         <td>
                             @if(auth()->user()->rol_id == 2 && !$solicitud->llegada_mecanico)
-                                <button class="btn" id="btnHoraLlegadaMecanico" data-solicitud="{{ $solicitud->id }}">
+                                <button class="btn outline-none" id="btnHoraLlegadaMecanico" data-solicitud="{{ $solicitud->id }}">
                                     <i class="far fa-clock"></i>
                                 </button>
                             @endif
                             @if (auth()->user()->rol_id == 3 && !$solicitud->reparacion)
-                                <button class="btn" id="btnCrearReparacion" data-solicitud="{{ $solicitud->id }}" data-bitacora="{{$solicitud->bitacora->id}}">
+                                <button class="btn outline-none" id="btnCrearReparacion" data-solicitud="{{ $solicitud->id }}" data-bitacora="{{$solicitud->bitacora->id}}">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             @endif

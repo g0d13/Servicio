@@ -1,7 +1,7 @@
 <x-slot name="header">
     Bitacoras
 </x-slot>
-<div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
+<div class="card p-3 rounded-3 overlay-scrollbar p-4" style="background-color: white!important">
     <div class="d-flex align-content-between align-items-center justify-content-between">
         <h6 class="text-muted mb-3 fs-5 fw-bold">Bitacoras</h6>
         @if(Auth::user()->rol->id == 1)
@@ -9,7 +9,7 @@
         @endif
     </div>
     <div class="table-responsive">
-        <table class=" table table-borderless align-middle">
+        <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
             <th class="text-uppercase text-muted px-0">#</th>
             <th class="text-uppercase text-muted px-0">Nombre</th>
