@@ -57,10 +57,10 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
         $aux = [];
 
         foreach ($solicitudes as $solicitud) {
-            if ($solicitud->bitacora->planta_id == $this->plantaId) {
+            if ($solicitud->bitacora()->withTrashed()->first()->planta_id == $this->plantaId) {
 
-                $mecanico = User::find($solicitud->bitacora->mecanico_id);
-                $this->planta = Planta::find($solicitud->bitacora->planta_id)->nombre;
+                $mecanico = User::find($solicitud->bitacora()->withTrashed()->first()->mecanico_id);
+                $this->planta = Planta::find($solicitud->bitacora()->withTrashed()->first()->planta_id)->nombre;
                 array_push($aux, [
                     'Prioridad' => $solicitud->prioridad ?? '',
                     'Operación' => $solicitud->operacion ?? '',
