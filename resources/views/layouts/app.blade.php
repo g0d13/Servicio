@@ -47,6 +47,12 @@
         .actives > div:nth-child(1) {
             background-color: var(--bs-blue) !important;
         }
+        body {
+            font-family: system-ui !important;
+        }
+        * {
+            font-family: system-ui !important;
+        }
     </style>
     <!-- Navbar -->
     <x-topnav />

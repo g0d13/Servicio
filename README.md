@@ -3,8 +3,11 @@
 - [MariaDb](https://mariadb.org/) o [MySql](https://www.mysql.com/)
 - [Apache](https://httpd.apache.org/download.cgi) 
 - [Composer](https://getcomposer.org/)
+
+## Extensiones necesarias
+
 ## Instalar el proyecto
-Para instalar descargar el proyecto es necesario ejecutar
+Para descargar el proyecto es necesario ejecutar
 ```bash
 git clone https://github.com/g0d13/swork
 ```
@@ -21,7 +24,7 @@ Una vez finalizado el proceso toca instalar las dependencias con composer
 composer install 
 ```
  
-## Creacion de una llave
+## Creación de una llave
 Despues de haber agregado los datos necesarios toca crear una llave con el comando
 ```bash
 php artisan key:generate
