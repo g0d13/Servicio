@@ -49,7 +49,7 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             $solicitudes = Solicitud::with('bitacora')->with('reparacion')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
             $this->fecha = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->format('d-m-y'). ' al '.Carbon::now()->subDays(Carbon::now()->dayOfWeek)->addDays(6)->format('d-m-y');
        } else if ($this->tipo === 'M') {
-            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("month(solicitudes.created_at)"), '=', DB::raw("month(now())"))->get();
+            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->whereMonth('created_at', now())->get();
             $this->fecha = Carbon::now()->monthName;
        }
 

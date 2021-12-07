@@ -12,7 +12,7 @@
                 <th class="text-muted ">#</th>
                 <th class="text-muted ">Prioridad</th>
                 <th class="text-muted ">Problema</th>
-                <th class="text-muted ">Modulo</th>
+                <th class="text-muted ">Módulo</th>
                 <th class="text-muted ">Supervisor</th>
                 <th class="text-muted ">Maquina</th>
                 <th class="text-muted ">Bitacora</th>

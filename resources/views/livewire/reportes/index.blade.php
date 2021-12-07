@@ -14,7 +14,7 @@
                 <th class="text-uppercase text-muted ">Prioridad</th>
                 <th class="text-uppercase text-muted ">Operación</th>
                 <th class="text-uppercase text-muted ">No. Máquina</th>
-                <th class="text-uppercase text-muted ">Modulo</th>
+                <th class="text-uppercase text-muted ">Módulo</th>
                 <th class="text-uppercase text-muted ">Código de problema</th>
                 <th class="text-uppercase text-muted ">Llamó al mecánico</th>
                 <th class="text-uppercase text-muted ">Llegó el mecánico</th>
