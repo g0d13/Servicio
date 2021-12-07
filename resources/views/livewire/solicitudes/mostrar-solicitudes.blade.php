@@ -9,14 +9,14 @@
         <div class="table-responsive">
             <table class="table table-borderless align-middle">
                 <thead class="border-top border-bottom">
-                <th class="text-uppercase text-muted ">#</th>
-                <th class="text-uppercase text-muted ">Prioridad</th>
-                <th class="text-uppercase text-muted ">Problema</th>
-                <th class="text-uppercase text-muted ">Modulo</th>
-                <th class="text-uppercase text-muted ">Supervisor</th>
-                <th class="text-uppercase text-muted ">Maquina</th>
-                <th class="text-uppercase text-muted ">Bitacora</th>
-                <th class="text-uppercase text-muted "></th>
+                <th class="text-muted ">#</th>
+                <th class="text-muted ">Prioridad</th>
+                <th class="text-muted ">Problema</th>
+                <th class="text-muted ">Modulo</th>
+                <th class="text-muted ">Supervisor</th>
+                <th class="text-muted ">Maquina</th>
+                <th class="text-muted ">Bitacora</th>
+                <th class="text-muted "></th>
                 </thead>
                 <tbody>
                 @foreach ($solicitudes as $solicitud)

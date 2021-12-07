@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        Bitacoras
+        Bitácoras
     </x-slot>
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
-            <p class="text-muted mb-3 fs-4 fw-bold">Bitacoras</p>
+            <p class="text-muted mb-3 fs-4 fw-bold">Bitácoras</p>
             <a href="{{ route('bitacoras.create') }}" class="btn btn-sm btn-primary">Agregar</a>
         </div>
         <table class="table-responsive-lg table table-borderless align-middle">
@@ -12,7 +12,7 @@
                 <th class="text-uppercase text-muted ">#</th>
                 <th class="text-uppercase text-muted ">Nombre</th>
                 <th class="text-uppercase text-muted ">Detalles</th>
-                <th class="text-uppercase text-muted ">Mecanico encargado</th>
+                <th class="text-uppercase text-muted ">Mecánico encargado</th>
                 <th class="text-uppercase text-muted ">Tipos</th>
                 <th class="text-uppercase text-muted "></th>
             </thead>
@@ -59,7 +59,7 @@
                             <input type="text" class="form-control" id="nombre">
                         </div>
                         <div class="mb-3">
-                            <label for="mecanico" class="form-label">Mecanico encargado</label>
+                            <label for="mecanico" class="form-label">Mecánico encargado</label>
                             <select id="mecanico" class="form-select form-select" aria-label=".form-select-sm example">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>

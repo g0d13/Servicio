@@ -1,9 +1,9 @@
 <x-slot name="header">
-    Maquinas
+    Máquinas
 </x-slot>
 <div class="card p-3 rounded-3 overlay-scrollbar p-4" style="background-color: white!important">
     <div class="d-flex align-content-between align-items-center justify-content-between">
-        <p class="text-muted mb-3 fs-4 fw-bold">Maquinas</p>
+        <p class="text-muted mb-3 fs-4 fw-bold">Máquinas</p>
         <button wire:click="$emit('mostrarModalCrearMaquina')" class="btn btn-sm btn-primary">Agregar</button>
     </div>
     <div class="table-responsive">

@@ -4,14 +4,14 @@
         <form class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ $planta ? 'Actualizar linea': 'Crear linea' }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close btn outline-none" data-dismiss="modal" aria-label="Close">
+                    <span class="fas fa-times"></span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" wire:model="nombre">
+                    <input type="text" class="form-control" wire:model="nombre" required>
                     @error('nombre')
                         <span class="text-danger fw-bold">{{ $message }}</span>
                     @enderror

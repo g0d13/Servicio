@@ -16,13 +16,13 @@ $usuarioAux = null;
         </div>
         <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
-                <th class="text-uppercase text-muted ">#</th>
-                <th class="text-uppercase text-muted ">Nombre</th>
-                <th class="text-uppercase text-muted ">Apellidos</th>
-                <th class="text-uppercase text-muted ">Correo</th>
-                <th class="text-uppercase text-muted ">rol</th>
-                <th class="text-uppercase text-muted ">planta</th>
-                <th class="text-uppercase text-muted ">Acciones</th>
+                <th class="text-muted ">#</th>
+                <th class="text-muted ">Nombre</th>
+                <th class="text-muted ">Apellidos</th>
+                <th class="text-muted ">Correo</th>
+                <th class="text-muted ">rol</th>
+                <th class="text-muted ">planta</th>
+                <th class="text-muted ">Acciones</th>
             </thead>
             <tbody>
                 @foreach ($usuarios as $usuario)

@@ -17,13 +17,6 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Detalles</label>
-                    <input id="nombre" type="text" class="form-control" wire:model="detalles">
-                    @error('detalles')
-                        <span class="text-danger fw-bold">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-3">
                     <label for="correo" class="form-label">Línea de producción</label>
                     <select wire:model="planta" id="correo" class="form-control" wire:model="plantaSeleccionada">
                         <option value="">--Seleccione una línea de producción--</option>
@@ -36,7 +29,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="mecanico" class="form-label">Mecanico encargado</label>
+                    <label for="mecanico" class="form-label">Mecánico encargado</label>
                     <select id="mecanico" class="form-select form-select" wire:model="mecanico">
                         <option>--Selecciona un mecánico--</option>
                         @foreach ($mecanicos as $mecanico)

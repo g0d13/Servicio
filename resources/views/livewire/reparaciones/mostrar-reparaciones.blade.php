@@ -8,11 +8,11 @@
     <div class="table-responsive">
         <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
-            <th class="text-uppercase text-muted ">#</th>
-            <th class="text-uppercase text-muted ">Tipo reparacion</th>
-            <th class="text-uppercase text-muted ">Quedo lista</th>
-            <th class="text-uppercase text-muted ">Mecanico</th>
-            <th class="text-uppercase text-muted ">Bitacora</th>
+            <th class="text-muted ">#</th>
+            <th class="text-muted ">Tipo reparación</th>
+            <th class="text-muted ">Quedó lista</th>
+            <th class="text-muted ">Mecánico</th>
+            <th class="text-muted ">Bitácora</th>
             </thead>
             <tbody>
             @foreach ($reparaciones as $reparacion)

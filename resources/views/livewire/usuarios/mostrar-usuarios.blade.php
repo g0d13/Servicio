@@ -9,13 +9,13 @@
     <div class="table-responsive">
         <table class="table table-borderless">
             <thead class="border-top border-bottom">
-                <th class="text-uppercase text-muted ">#</th>
-                <th class="text-uppercase text-muted ">Nombre</th>
-                <th class="text-uppercase text-muted ">Apellidos</th>
-                <th class="text-uppercase text-muted ">Correo</th>
-                <th class="text-uppercase text-muted ">Rol</th>
-                <th class="text-uppercase text-muted ">Línea de producción</th>
-                <th class="text-uppercase text-muted ">Acciones</th>
+                <th class="text-muted ">#</th>
+                <th class="text-muted ">Nombre</th>
+                <th class="text-muted ">Apellidos</th>
+                <th class="text-muted ">Correo</th>
+                <th class="text-muted ">Rol</th>
+                <th class="text-muted ">Línea de producción</th>
+                <th class="text-muted ">Acciones</th>
             </thead>
             <tbody>
             @foreach ($usuarios as $usuario)

@@ -1,9 +1,9 @@
 <x-slot name="header">
-    Bitacoras
+    Bitácoras
 </x-slot>
 <div class="card p-3 rounded-3 overlay-scrollbar p-4" style="background-color: white!important">
     <div class="d-flex align-content-between align-items-center justify-content-between">
-        <h6 class="text-muted mb-3 fs-5 fw-bold">Bitacoras</h6>
+        <h6 class="text-muted mb-3 fs-5 fw-bold">Bitácoras</h6>
         @if(Auth::user()->rol->id == 1)
             <button class="btn btn-sm btn-primary" wire:click="$emit('mostrarModalCrearBitacora')">Agregar</button>
         @endif
@@ -11,12 +11,12 @@
     <div class="table-responsive">
         <table class="table table-borderless align-middle">
             <thead class="border-top border-bottom">
-            <th class="text-uppercase text-muted px-0">#</th>
-            <th class="text-uppercase text-muted px-0">Nombre</th>
-            <th class="text-uppercase text-muted px-0">Planta</th>
-            <th class="text-uppercase text-muted px-0">Mecanico encargado</th>
+            <th class="text-muted px-0">#</th>
+            <th class="text-muted px-0">Nombre</th>
+            <th class="text-muted px-0">Planta</th>
+            <th class="text-muted px-0">Mecánico encargado</th>
             @if(auth()->user()->rol_id == 1)
-                <th class="text-uppercase text-muted px-0">Status</th>
+                <th class="text-muted px-0">Status</th>
             @endif
             <th class="">Acciones</th>
             </thead>

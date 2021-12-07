@@ -61,7 +61,7 @@
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <span class="sidebar-icon"><span class="fas fa-tools"></span></span>
                         </div>
-                        <span class="text-dark">Maquinas</span>
+                        <span class="text-dark">Máquinas</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -77,7 +77,7 @@
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
                         </div>
-                        <span class="text-dark">Configuracion</span>
+                        <span class="text-dark">Configuración</span>
                     </a>
                 </li>
             @endif

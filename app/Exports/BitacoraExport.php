@@ -44,7 +44,9 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("date(solicitudes.created_at)"), '=', DB::raw("now()"))->get();
             $this->fecha = Carbon::now()->format('d-m-Y');
        } elseif ($this->tipo === 'S') {
-            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("yearweek(solicitudes.created_at)"), '=', DB::raw("yearweek(now())"))->get();
+           // Data::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+            // $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("yearweek(solicitudes.created_at)"), '=', DB::raw("yearweek(now())"))->get();
+            $solicitudes = Solicitud::with('bitacora')->with('reparacion')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
             $this->fecha = Carbon::now()->subDays(Carbon::now()->dayOfWeek)->format('d-m-y'). ' al '.Carbon::now()->subDays(Carbon::now()->dayOfWeek)->addDays(6)->format('d-m-y');
        } else if ($this->tipo === 'M') {
             $solicitudes = Solicitud::with('bitacora')->with('reparacion')->where(DB::raw("month(solicitudes.created_at)"), '=', DB::raw("month(now())"))->get();
@@ -64,14 +66,14 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
                 array_push($aux, [
                     'Prioridad' => $solicitud->prioridad ?? '',
                     'Operación' => $solicitud->operacion ?? '',
-                    'No. Maquina' => $solicitud->maquina_id ?? '',
+                    'No. Máquina' => $solicitud->maquina_id ?? '',
                     'Módulo' => $solicitud->modulo ?? '',
                     'Código del problema' => $solicitud->problema_id ?? '',
-                    'LLamó al mecanico' => $solicitud->created_at ?? '',
+                    'LLamó al mecánico' => $solicitud->created_at ?? '',
                     'Llegó el mecánico' => $solicitud->llegada_mecanico ?? '',
                     'Quedó lista' => $solicitud->reparacion->quedo_lista ?? '',
                     'Tipo de reparación' => $solicitud->reparacion->tipo_reparacion ?? '',
-                    'Nombre del mecanico' => $mecanico->nombre . ' ' . $mecanico->apellidos ?? ''
+                    'Nombre del mecánico' => $mecanico->nombre . ' ' . $mecanico->apellidos ?? ''
                 ]);
                 $this->index ++;
             }
@@ -90,10 +92,10 @@ class BitacoraExport implements FromCollection, WithHeadings, ShouldAutoSize, Wi
             [
                 'Prioridad',
                 'Operación',
-                'No. Maquina',
+                'No. Máquina',
                 'Módulo',
                 'Código del problema',
-                'LLamó al mecanico',
+                'LLamó al mecánico',
                 'Llegó el mecánico',
                 'Quedó lista',
                 'Tipo de reparación',

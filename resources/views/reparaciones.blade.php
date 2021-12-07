@@ -28,7 +28,7 @@
                     Juan Diego
                 </td>
                 <td>
-                    Maquina 33
+                    Máquina 33
                 </td>
             </tbody>
         </table>

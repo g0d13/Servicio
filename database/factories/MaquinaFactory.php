@@ -23,7 +23,7 @@ class MaquinaFactory extends Factory
     public function definition()
     {
         return [
-            'id' => Str::uuid(),
+            'id' => $this->faker->numberBetween(1000, 10000),
             'modelo' => $this->faker->regexify('[A-Z]{5}[0-4]{3}'),
             'marca' => $this->faker->company,
             'operador' => $this->faker->name

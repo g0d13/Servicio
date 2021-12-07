@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        Maquinas
+        Máquinas
     </x-slot>
     <div class="card p-3 rounded-3 overlay-scrollbar" style="background-color: white!important">
         <div class="d-flex align-content-between align-items-center justify-content-between">
-            <p class="text-muted mb-3 fs-4 fw-bold">Maquinas</p>
+            <p class="text-muted mb-3 fs-4 fw-bold">Máquinas</p>
             <a href="#!" class="btn btn-sm btn-primary">Agregar</a>
         </div>
         <table class="table table-borderless align-middle">

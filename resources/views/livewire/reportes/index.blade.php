@@ -12,20 +12,20 @@
                 <thead class="border-top border-bottom">
                 <th class="text-uppercase">#</th>
                 <th class="text-uppercase text-muted ">Prioridad</th>
-                <th class="text-uppercase text-muted ">Operacion</th>
-                <th class="text-uppercase text-muted ">No. Maquina</th>
+                <th class="text-uppercase text-muted ">Operación</th>
+                <th class="text-uppercase text-muted ">No. Máquina</th>
                 <th class="text-uppercase text-muted ">Modulo</th>
-                <th class="text-uppercase text-muted ">Codigo de problema</th>
-                <th class="text-uppercase text-muted ">Llamo al mecanico</th>
-                <th class="text-uppercase text-muted ">Llego el mecanico</th>
-                <th class="text-uppercase text-muted ">Quedo lista</th>
-                <th class="text-uppercase text-muted ">Tipo de reparacion</th>
-                <th class="text-uppercase text-muted ">Nombre del mecanico</th>
+                <th class="text-uppercase text-muted ">Código de problema</th>
+                <th class="text-uppercase text-muted ">Llamó al mecánico</th>
+                <th class="text-uppercase text-muted ">Llegó el mecánico</th>
+                <th class="text-uppercase text-muted ">Quedó lista</th>
+                <th class="text-uppercase text-muted ">Tipo de reparacián</th>
+                <th class="text-uppercase text-muted ">Nombre del mecánico</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td>#</td>
-                        <td>Sin mecanico encargado</td>
+                        <td>Sin mécanico encargado</td>
                         <td>12 de sep de 2021</td>
                     </tr>
                 </tbody>

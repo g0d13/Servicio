@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Configuracion
+        Configuración
     </x-slot>
     <div class="card p-4">
         <form>
