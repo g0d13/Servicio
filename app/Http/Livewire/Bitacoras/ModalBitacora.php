@@ -19,19 +19,16 @@ class ModalBitacora extends Component
 
     public function crearBitacora() {
         $this->validate( [
-            'nombre' => 'required|min:3',
-            'detalles' => 'required',
+            'nombre' => 'string',
             'mecanico' => 'required|numeric',
             'planta' => 'required|numeric'
         ], null,  [
             'nombre' => $this->nombre,
-            'detalles' => $this->detalles,
             'mecanico' => $this->mecanico,
             'planta' => $this->planta
         ]);
-        Bitacora::create([
+        $bitacora = Bitacora::create([
             'nombre' => $this->nombre,
-            'detalles' => $this->detalles,
             'mecanico_id' => $this->mecanico,
             'planta_id' => $this->planta
         ]);

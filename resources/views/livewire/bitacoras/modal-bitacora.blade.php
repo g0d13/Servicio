@@ -30,7 +30,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="mecanico" class="form-label">Mecánico encargado</label>
-                    <select id="mecanico" class="form-select form-select" wire:model="mecanico">
+                    <select name="mecanico" id="mecanico" class="form-select form-select" wire:model="mecanico">
                         <option>--Selecciona un mecánico--</option>
                         @foreach ($mecanicos as $mecanico)
                             <option value="{{ $mecanico->id }}">{{ $mecanico->nombre }} {{ $mecanico->apellidos }}
