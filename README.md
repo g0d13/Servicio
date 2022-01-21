@@ -33,3 +33,4 @@ php artisan key:generate
 ## Iniciar
 Se puede iniciar el servidor con ```php artisan serve```
 o configurar el servidor apache.
+
